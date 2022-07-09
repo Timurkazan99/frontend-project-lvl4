@@ -1,9 +1,28 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Formik } from 'formik';
 import {Card, Container, Form, FloatingLabel, Button} from "react-bootstrap";
 import {LoginSchema} from "../utils/validator";
+import {Context} from "../components/ContextProvider";
+import {useNavigate} from "react-router-dom";
+import {NOTFOUND_ROUTE} from "../utils/const";
+import {login} from "../http/userAPI";
 
 const Auth = () => {
+    const navigate = useNavigate();
+    const {user} = useContext(Context);
+
+    const click = async ({username, password}) => {
+        try {
+            let data;
+            data = await login(username, password);
+            user.setName(data.username);
+            user.setIsAuth(true);
+            navigate(NOTFOUND_ROUTE);
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
@@ -15,12 +34,10 @@ const Auth = () => {
                     <Formik
                         validationSchema={LoginSchema}
                         initialValues={{
-                            email: '',
+                            username: '',
                             password: '',
                         }}
-                        onSubmit={(e) => {
-                            console.log(e)
-                        }}
+                        onSubmit={click}
                     >
                     {({
                           handleSubmit,
@@ -30,17 +47,17 @@ const Auth = () => {
                     }) => (
                         <Form noValidate onSubmit={handleSubmit}>
                             <FloatingLabel
-                                controlId="email"
-                                label="Email address"
+                                controlId="username"
+                                label="Username address"
                                 className="mt-3"
                             >
                                 <Form.Control
-                                    name="email"
-                                    type="email"
+                                    name="username"
+                                    type="username"
                                     placeholder="name@example.com"
                                     onInput={handleChange}
                                 />
-                                {touched.email && errors.email && <div>{errors.email}</div>}
+                                {touched.username && errors.username && <div>{errors.username}</div>}
                             </FloatingLabel>
                             <FloatingLabel
                                 controlId="password"
