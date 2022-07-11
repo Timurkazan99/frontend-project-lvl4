@@ -21,7 +21,7 @@ const App = () => {
         console.log(user.isAuth, token);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    })
+    }, [])
 
     if(isLoading) {
       return (
