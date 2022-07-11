@@ -1,9 +1,14 @@
 import React, {useEffect, useContext} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import {Context} from "../components/ContextProvider";
 import {LOGIN_ROUTE} from "../utils/const";
+import {thunkFetchData} from "../store/thunks/fetchData";
 
 const Chat = () => {
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state);
+
     const navigate = useNavigate();
     const {user} = useContext(Context);
 
@@ -14,6 +19,8 @@ const Chat = () => {
         return;
       }
 
+      dispatch(thunkFetchData());
+      console.log(state)
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
