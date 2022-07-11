@@ -4,14 +4,11 @@ import Auth from "./pages/Auth.js";
 import ErrorPage from "./pages/ErrorPage.js";
 
 
-export const authRoutes = [
+export const routes = [
     {
         path: CHAT_ROUTE,
         Component: Chat,
     },
-]
-
-export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         Component: Auth

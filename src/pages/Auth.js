@@ -4,7 +4,7 @@ import {Card, Container, Form, FloatingLabel, Button} from "react-bootstrap";
 import {LoginSchema} from "../utils/validator";
 import {Context} from "../components/ContextProvider";
 import {useNavigate} from "react-router-dom";
-import {NOTFOUND_ROUTE} from "../utils/const";
+import {CHAT_ROUTE} from "../utils/const";
 import {login} from "../http/userAPI";
 
 const Auth = () => {
@@ -17,7 +17,7 @@ const Auth = () => {
             data = await login(username, password);
             user.setName(data.username);
             user.setIsAuth(true);
-            navigate(NOTFOUND_ROUTE);
+            navigate(CHAT_ROUTE);
         } catch (e) {
             alert(e.message)
         }
@@ -48,13 +48,13 @@ const Auth = () => {
                         <Form noValidate onSubmit={handleSubmit}>
                             <FloatingLabel
                                 controlId="username"
-                                label="Username address"
+                                label="Username"
                                 className="mt-3"
                             >
                                 <Form.Control
                                     name="username"
                                     type="username"
-                                    placeholder="name@example.com"
+                                    placeholder="Username"
                                     onInput={handleChange}
                                 />
                                 {touched.username && errors.username && <div>{errors.username}</div>}
