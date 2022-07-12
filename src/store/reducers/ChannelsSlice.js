@@ -2,7 +2,7 @@ import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {thunkFetchData} from "../thunks/fetchData";
 
 const channelsAdapter = createEntityAdapter();
-const initialState = channelsAdapter.getInitialState({ loading: 'idle', error: null });
+const initialState = channelsAdapter.getInitialState({ loading: null, error: null, active: 1 });
 
 export const channelsSlice = createSlice({
     name: 'channels',
@@ -11,6 +11,9 @@ export const channelsSlice = createSlice({
         addChannel: channelsAdapter.addOne,
         removeChannel: channelsAdapter.removeOne,
         updateChannel: channelsAdapter.updateOne,
+        setActive: (state, action) => {
+            state.active = action.payload.id;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -19,7 +22,8 @@ export const channelsSlice = createSlice({
                 state.error = null;
             })
             .addCase(thunkFetchData.fulfilled, (state, action) => {
-                channelsAdapter.setAll(state, action.payload.channels);
+                const {channels} = action.payload;
+                channelsAdapter.setAll(state, channels);
                 state.loading = 'loaded';
                 state.error = null;
             })

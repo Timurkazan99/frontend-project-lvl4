@@ -2,7 +2,7 @@ import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {thunkFetchData} from "../thunks/fetchData";
 
 const messagesAdapter = createEntityAdapter();
-const initialState = messagesAdapter.getInitialState({ loading: 'idle', error: null });
+const initialState = messagesAdapter.getInitialState({ loading: null, error: null });
 
 export const messagesSlice = createSlice({
     name: 'messages',

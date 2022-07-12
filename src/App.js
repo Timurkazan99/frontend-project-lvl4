@@ -10,7 +10,6 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-      console.log('App');
         const token = localStorage.getItem('token');
         if (token) {
           user.setIsAuth(true);
