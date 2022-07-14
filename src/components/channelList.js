@@ -3,11 +3,11 @@ import {ListGroup} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {actions} from "../store/reducers/ChannelsSlice";
 
-const ChannelList = ({active}) => {
+const ChannelList = () => {
     const dispatch = useDispatch();
     const channels = useSelector((state) => state.channels);
 
-    const click = (id) => { dispatch(actions.setActive({id})) };
+    const click = (channel) => { dispatch(actions.setActive(channel)) };
 
     return (
         <>
@@ -27,8 +27,8 @@ const ChannelList = ({active}) => {
                         className="nav-item w-100"
                         action
                         key={c.id}
-                        active={c.id === channels.active}
-                        onClick={() => {click(c.id)}}
+                        active={c.id === channels.active.id}
+                        onClick={() => {click(c)}}
                         variant='light'
                     >
                         <span>#</span> {c.name}
