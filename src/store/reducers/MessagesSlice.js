@@ -10,7 +10,6 @@ export const messagesSlice = createSlice({
     initialState,
     reducers: {
         addMessage: messagesAdapter.addOne,
-        removeMessage: messagesAdapter.removeOne,
     },
     extraReducers: (builder) => {
         builder
