@@ -18,14 +18,15 @@ export default function useSocket () {
 
     socket.on('newChannel', (payload) => {
         dispatch(channelsActions.addChannel(payload));
+        dispatch(channelsActions.setActive(payload));
     });
 
     socket.on('removeChannel', (payload) => {
-        dispatch(channelsActions.removeChannel(payload));
+        dispatch(channelsActions.removeChannel(payload.id));
     });
 
     socket.on('renameChannel', (payload) => {
-        dispatch(channelsActions.updateChannel(payload));
+        dispatch(channelsActions.updateChannel({id: payload.id, changes: payload}));
     });
 
     return socket;

@@ -1,5 +1,6 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {thunkFetchData} from "../thunks/fetchData";
+import {actions as channelActions} from "./ChannelsSlice";
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState({ loading: null, error: null });
@@ -26,7 +27,14 @@ export const messagesSlice = createSlice({
             .addCase(thunkFetchData.rejected, (state, action) => {
                 state.loading = 'failed';
                 state.error = action.error;
-            });
+            })
+            .addCase(channelActions.removeChannel, (state, {payload: id}) => {
+                const ids = Object.values(state.entities)
+                    .filter(({channelId}) => channelId === id)
+                    .map(({id}) => id);
+                messagesAdapter.removeMany(state, ids)
+
+        });
     }
 })
 

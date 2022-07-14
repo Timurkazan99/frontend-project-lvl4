@@ -8,6 +8,7 @@ import {Col, Container, Row } from "react-bootstrap";
 import ChannelContainer from "../components/ChannelContainer";
 import ChatTab from "../components/ChatTab";
 import SocketProvider from "../components/SocketProvider";
+import ChannelModal from "../components/modals/ChannelModal";
 
 const Chat = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const Chat = () => {
                         <ChatTab />
                     </Col>
                 </Row>
+                <ChannelModal/>
             </Container>
         </SocketProvider>
     );
