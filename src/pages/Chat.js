@@ -10,8 +10,6 @@ import ChannelList from "../components/channelList";
 const Chat = () => {
     const dispatch = useDispatch();
 
-    const [active, setActive] = useState(1);
-
     const navigate = useNavigate();
     const {user} = useContext(Context);
 
