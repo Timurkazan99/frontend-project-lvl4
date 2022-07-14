@@ -10,7 +10,6 @@ export const messagesSlice = createSlice({
     reducers: {
         addMessage: messagesAdapter.addOne,
         removeMessage: messagesAdapter.removeOne,
-        updateMessage: messagesAdapter.updateOne,
     },
     extraReducers: (builder) => {
         builder
@@ -19,7 +18,8 @@ export const messagesSlice = createSlice({
                 state.error = null;
             })
             .addCase(thunkFetchData.fulfilled, (state, action) => {
-                messagesAdapter.setAll(state, action.payload.messages);
+                const {messages} = action.payload;
+                messagesAdapter.setAll(state, messages);
                 state.loading = 'loaded';
                 state.error = null;
             })
