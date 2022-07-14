@@ -1,11 +1,13 @@
-import React, {useEffect, useContext, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useEffect, useContext} from 'react';
+import { useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import {Context} from "../components/ContextProvider";
 import {LOGIN_ROUTE} from "../utils/const";
 import {thunkFetchData} from "../store/thunks/fetchData";
-import {Col, Container, Row, Tab, ListGroup} from "react-bootstrap";
+import {Col, Container, Row } from "react-bootstrap";
 import ChannelList from "../components/channelList";
+import ChatTab from "../components/ChatTab";
+import SocketProvider from "../components/SocketProvider";
 
 const Chat = () => {
     const dispatch = useDispatch();
