@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import {useSelector} from "react-redux";
 
-const MessageBox = ({active}) => {
+const MessageBox = () => {
+    const active = useSelector((state) => state.channels.active.id);
     const chatBoxRef = useRef(null);
     const messages = useSelector((state) => state.messages);
     const filteredMessages = Object.values(messages.entities).filter((m) => m.channelId === active);
