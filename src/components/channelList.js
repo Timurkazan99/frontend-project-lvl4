@@ -19,17 +19,19 @@ const ChannelList = ({active}) => {
                     +
                 </button>
             </div>
-            <ListGroup className="h-100">
+            <ListGroup
+                className="nav flex-column nav-pills nav-fill px-2"
+            >
                 {Object.values(channels.entities).map((c) =>
                     <ListGroup.Item
-                        className="rounded-0 "
+                        className="nav-item w-100"
                         action
                         key={c.id}
                         active={c.id === channels.active}
                         onClick={() => {click(c.id)}}
                         variant='light'
                     >
-                        <span className="me-1">#</span> {c.name}
+                        <span>#</span> {c.name}
                     </ListGroup.Item>
                 )}
             </ListGroup>

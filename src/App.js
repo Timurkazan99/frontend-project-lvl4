@@ -26,16 +26,19 @@ const App = () => {
 
     if(isLoading) {
       return (
-        <div className="m-auto d-absolute">
-          <Spinner animation={"grow"} />
+        <div className="d-flex flex-column justify-content-center align-items-center h-100">
+            <span>Loading</span>
+            <Spinner animation={"grow"} />
         </div>
       )
     }
 
     return (
         <BrowserRouter>
-            <Navbar />
-            <AppRouter />
+            <div className="d-flex flex-column h-100">
+                <Navbar />
+                <AppRouter />
+            </div>
         </BrowserRouter>
     );
 };

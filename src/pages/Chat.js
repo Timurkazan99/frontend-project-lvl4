@@ -24,16 +24,18 @@ const Chat = () => {
     }, []);
 
     return (
-        <Container className="my-4 mx-auto overflow-hidden rounded shadow p-0" style={{"min-height": '865px', "min-width": '936px'}}>
-            <Row className="bg-white flex-md-row mt-3" style={{height: "100vh"}}>
-                <Col md={2} className="border-end  p-0">
-                    <ChannelList active={active} />
-                </Col>
-                <Col>
-
-                </Col>
-            </Row>
-        </Container>
+        <SocketProvider>
+            <Container className="h-100 my-4 overflow-hidden rounded shadow">
+                <Row className="h-100 bg-white flex-md-row">
+                    <Col md={2} className="col-4 col-md-2 border-end pt-5 px-0 bg-light">
+                        <ChannelList />
+                    </Col>
+                    <Col className="col p-0 h-100">
+                        <ChatTab />
+                    </Col>
+                </Row>
+            </Container>
+        </SocketProvider>
     );
 };
 
