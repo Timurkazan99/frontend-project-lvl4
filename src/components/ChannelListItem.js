@@ -3,9 +3,11 @@ import {Button, ButtonGroup, Dropdown} from "react-bootstrap";
 import {actions} from "../store/reducers/ChannelsSlice";
 import {useDispatch} from "react-redux";
 import {onShow} from "../store/reducers/ModalSlice";
+import {useTranslation} from "react-i18next";
 
 const ChannelListItem = ({id, active, name, removable}) => {
     const dispatch = useDispatch();
+    const { t } = useTranslation('translation', { keyPrefix: 'channels' });
     const chooseChannel = () => { dispatch(actions.setActive({id, name})) };
     const changeChannel = (eventName) => {
         dispatch(actions.setSelected({eventName, id, name}));
@@ -30,10 +32,11 @@ const ChannelListItem = ({id, active, name, removable}) => {
                             split
                             variant={id === active ? "secondary" : "light"}
                             id="dropdown-split-basic"
+                            aria-label={t('control')}
                         />
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => changeChannel('removeChannel')}>Удалить</Dropdown.Item>
-                            <Dropdown.Item onClick={() => changeChannel('renameChannel')}>Переименовать</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changeChannel('removeChannel')}>{t('remove')}</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changeChannel('renameChannel')}>{t('rename')}</Dropdown.Item>
                         </Dropdown.Menu>
                     </>
                     :

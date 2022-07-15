@@ -5,6 +5,7 @@ import responseStatusCheck from "../../utils/responseStatusCheck";
 import {Button, Form} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import {ChannelSchema} from "../../utils/validator";
+import {useTranslation} from "react-i18next";
 
 const ChannelForm = ({onHide}) => {
     const socket = useContext(SocketContext);
@@ -13,6 +14,7 @@ const ChannelForm = ({onHide}) => {
     const channels = useSelector((state) => state.channels.entities);
     const channelsNames = Object.values(channels).map(({name}) => name);
     const validationSchema = ChannelSchema(channelsNames);
+    const { t } = useTranslation('translation', { keyPrefix: 'channelModal' });
 
     const click = ({channelName}, actions) => {
         const payload = selected.id ? {name: channelName, id: selected.id} : {name: channelName};
@@ -43,8 +45,8 @@ const ChannelForm = ({onHide}) => {
                         className="mb-2"
                         id="channelName"
                         name="channelName"
-                        placeholder=""
-                        aria-label="Имя канала"
+                        placeholder={t('fieldPlaceholder')}
+                        aria-label={t('fieldLabel')}
                         value={formik.values.channelName}
                         ref={inputRef}
                         onChange={formik.handleChange}
@@ -55,14 +57,14 @@ const ChannelForm = ({onHide}) => {
                             className="me-2 btn btn-secondary"
                             onClick={onHide}
                         >
-                            Отменить
+                            {t('cancel')}
                         </Button>
                         <Button
                             type="submit"
                             className="btn btn-primary"
                             disabled={formik.values.channelName === '' || formik.isSubmitting}
                         >
-                            Отправить
+                            {t('accept')}
                         </Button>
                     </div>
                 </div>

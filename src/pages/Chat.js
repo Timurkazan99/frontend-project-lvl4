@@ -18,7 +18,7 @@ const Chat = () => {
 
     useEffect(() => {
       if (!user.isAuth) {
-        navigate(LOGIN_ROUTE)
+        navigate(LOGIN_ROUTE);
         return;
       }
 

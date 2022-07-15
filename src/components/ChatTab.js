@@ -5,7 +5,6 @@ import MessageInput from "./MessageInput";
 
 
 const ChatTab = () => {
-
     return (
         <div className="d-flex flex-column h-100">
             <ChatTabTitle />

@@ -3,10 +3,12 @@ import {Button, Container, Navbar} from 'react-bootstrap';
 import {NavLink, useNavigate} from "react-router-dom";
 import {CHAT_ROUTE, LOGIN_ROUTE} from "../utils/const";
 import {Context} from "./ContextProvider";
+import {useTranslation} from "react-i18next";
 
 const NavBar = () => {
     const {user} = useContext(Context);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { t } = useTranslation('translation', { keyPrefix: 'navBar' });
 
     const logout = () => {
         user.setIsAuth(false);
@@ -22,7 +24,7 @@ const NavBar = () => {
                 { user.isAuth ?
                     <div>
                         <span className="mx-3" style={{color: "white"}}>{user.name}</span>
-                        <Button variant={"primary"} onClick={logout}>Выйти</Button>
+                        <Button variant={"primary"} onClick={logout}>{t('logOut')}</Button>
                     </div>
                     :
                     null

@@ -1,7 +1,10 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
 
-const ChatTabTitle =() => {
+const ChatTabTitle = () => {
+
+    const { t } = useTranslation('translation', { keyPrefix: 'messages' });
 
     const active = useSelector((state) => state.channels.active);
     const messages = useSelector((state) => state.messages);
@@ -12,7 +15,7 @@ const ChatTabTitle =() => {
             <p className="m-0">
                 <b># {active.name}</b>
             </p>
-            <span className="text-muted">{filteredMessages.length} сообщений</span>
+            <span className="text-muted">{t('messages', { count: filteredMessages.length})}</span>
         </div>
     );
 };

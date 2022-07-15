@@ -3,9 +3,11 @@ import {Button} from "react-bootstrap";
 import {actions} from "../store/reducers/ChannelsSlice";
 import {onShow} from "../store/reducers/ModalSlice";
 import {useDispatch} from "react-redux";
+import {useTranslation} from "react-i18next";
 
 const ChannelHeader = () => {
     const dispatch = useDispatch();
+    const { t } = useTranslation('translation', { keyPrefix: 'channels' });
 
     const createChannel = () => {
         dispatch(actions.setSelected({eventName: 'newChannel'}));
@@ -14,7 +16,7 @@ const ChannelHeader = () => {
 
     return (
         <div className="mb-3 ps-4 pe-2 d-flex justify-content-between">
-            <span>Каналы</span>
+            <span>{t('title')}</span>
                 <Button
                     variant="outline-primary"
                     className="p-0 m-0 border-0"

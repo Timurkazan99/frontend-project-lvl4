@@ -3,12 +3,14 @@ import {Card, Container} from "react-bootstrap";
 import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/const";
 import SigningForm from "../components/SigninForm";
 import SignupForm from "../components/SignupForm";
-import {useLocation} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const Auth = () => {
 
     const location = useLocation();
     const isSignup = () => location.pathname === REGISTRATION_ROUTE;
+    const { t } = useTranslation('translation', { keyPrefix: 'auth' });
 
     return (
         <Container
@@ -16,7 +18,7 @@ const Auth = () => {
             style={{height: window.innerHeight - 54}}
         >
             <Card style={{ width: 600 }} className="px-5 py-3">
-                <Card.Header className="text-center pl-4 pr-4 pb-4"><h2 className="m-auto">Sign In</h2></Card.Header>
+                <Card.Header className="text-center pl-4 pr-4 pb-4"><h2 className="m-auto">{isSignup() ? t('regTitle') : t('authTitle')}</h2></Card.Header>
                 <Card.Body>
                     { isSignup() ? <SignupForm /> : <SigningForm />}
                 </Card.Body>
@@ -24,11 +26,11 @@ const Auth = () => {
                     {
                         isSignup() ?
                             <>
-                                <span>Есть аккаунт?</span> <a href={LOGIN_ROUTE} className="keychainify-checked">Авторизация</a>
+                                <span>{t('registered')}</span> <NavLink to={LOGIN_ROUTE}>{t('authorization')}</NavLink>
                             </>
                             :
                             <>
-                                <span>Нет аккаунта?</span> <a href={REGISTRATION_ROUTE} className="keychainify-checked">Регистрация</a>
+                                <span>{t('notRegistered')}</span> <NavLink to={REGISTRATION_ROUTE}>{t('registration')}</NavLink>
                             </>
                     }
                 </Card.Footer>

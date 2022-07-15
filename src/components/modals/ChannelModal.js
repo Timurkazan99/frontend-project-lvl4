@@ -4,24 +4,26 @@ import ChannelForm from "./ChannelForm";
 import DeleteChannel from "./DeleteChannel";
 import {useDispatch, useSelector} from "react-redux";
 import {onHide} from "../../store/reducers/ModalSlice";
+import {useTranslation} from "react-i18next";
 
 const ChannelModal = () => {
     const dispatch = useDispatch();
     const show = useSelector((state) => state.modal.show);
     const eventName = useSelector((state) => state.channels.selected.eventName);
     const close = () => dispatch(onHide());
+    const { t } = useTranslation('translation', { keyPrefix: 'channelModal' });
 
     const mapping = {
         'newChannel': {
-            title: 'Добавить канал',
+            title: t('createTitle'),
             Component: () =>  <ChannelForm eventName={eventName} onHide={close}/>
         },
         'renameChannel': {
-            title: 'Переименовать канал',
+            title: t('renameTitle'),
             Component: () => <ChannelForm eventName={eventName} onHide={close}/>
         },
         'removeChannel': {
-            title: 'Удалить канал',
+            title: t('deleteTitle'),
             Component: () => <DeleteChannel onHide={close} />
         },
     }
