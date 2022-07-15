@@ -9,7 +9,6 @@ const ru = {
         },
         auth: {
             // Errors
-            networkError: 'Ошибка соединения',
             required: 'Поле должно быть заполнено',
             badUsername: 'Проверьте правильность логина',
             badPassword: 'Проверьте правильность пароля',
@@ -46,7 +45,6 @@ const ru = {
         },
         channelModal: {
             // Errors
-            networkError: 'Ошибка соединения',
             required: 'Поле должно быть заполнено',
             alreadyExist: 'Имя канала уже используется',
 
@@ -73,10 +71,8 @@ const ru = {
             messages_one: '{{ count }} сообщение',
             messages_few: '{{ count }} сообщения',
             messages_many: '{{ count }} сообщений',
-            networkError: 'Ошибка соединения',
         },
         toastText: {
-            greeting: "Добро пожаловать в чат",
             sentencesStart: "Канал",
             sentencesAddingEnd: "создан",
             sentencesRenamingEnd: "переименован на:",
