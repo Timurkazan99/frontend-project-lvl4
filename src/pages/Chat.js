@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from 'react';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import {Context} from "../components/ContextProvider";
 import {LOGIN_ROUTE} from "../utils/const";
@@ -9,12 +9,14 @@ import ChannelContainer from "../components/ChannelContainer";
 import ChatTab from "../components/ChatTab";
 import SocketProvider from "../components/SocketProvider";
 import ChannelModal from "../components/modals/ChannelModal";
+import useToast from "../hooks/useToast";
 
 const Chat = () => {
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
     const {user} = useContext(Context);
+    const channels = useSelector((state) => state.channels);
+    const {networkError} = useToast();
 
     useEffect(() => {
       if (!user.isAuth) {
@@ -25,6 +27,13 @@ const Chat = () => {
       dispatch(thunkFetchData());
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        console.log(channels.error);
+        if(channels.error) {
+            networkError();
+        }
+    }, [channels.error]);
 
     return (
         <SocketProvider>

@@ -6,6 +6,7 @@ import {Button, Form} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import {ChannelSchema} from "../../utils/validator";
 import {useTranslation} from "react-i18next";
+import useToast from "../../hooks/useToast";
 
 const ChannelForm = ({onHide}) => {
     const socket = useContext(SocketContext);
@@ -15,10 +16,13 @@ const ChannelForm = ({onHide}) => {
     const channelsNames = Object.values(channels).map(({name}) => name);
     const validationSchema = ChannelSchema(channelsNames);
     const { t } = useTranslation('translation', { keyPrefix: 'channelModal' });
+    const {networkError} = useToast();
+
+    const callback = (response) => responseStatusCheck(response, networkError);
 
     const click = ({channelName}, actions) => {
         const payload = selected.id ? {name: channelName, id: selected.id} : {name: channelName};
-        socket.emit(selected.eventName, payload, responseStatusCheck);
+        socket.emit(selected.eventName, payload, callback);
         actions.setValues( { 'channelName': '' });
         onHide();
     };

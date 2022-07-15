@@ -8,12 +8,14 @@ import {login} from "../http/userAPI";
 import {CHAT_ROUTE} from "../utils/const";
 import {isHandleableError} from "../utils/handleErrorStatus";
 import {useTranslation} from "react-i18next";
+import useToast from "../hooks/useToast";
 
 const SigningForm = () => {
 
     const navigate = useNavigate();
     const {user} = useContext(Context);
     const { t } = useTranslation('translation', { keyPrefix: 'auth' });
+    const {networkError} = useToast();
 
     const click = async ({username, password}, actions) => {
         try {
@@ -26,7 +28,7 @@ const SigningForm = () => {
             if (isHandleableError(e.response.status, 401)) {
                 actions.setErrors({username: 'badUsername', password: 'badPassword'})
             } else {
-                alert('Проблемы с сетью, попробуйте ещё раз...')
+                networkError();
             }
         }
     }

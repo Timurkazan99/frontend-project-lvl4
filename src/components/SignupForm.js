@@ -8,12 +8,14 @@ import {registration} from "../http/userAPI";
 import {CHAT_ROUTE} from "../utils/const";
 import {isHandleableError} from "../utils/handleErrorStatus";
 import {useTranslation} from "react-i18next";
+import useToast from "../hooks/useToast";
 
 const SignupForm = () => {
 
     const navigate = useNavigate();
     const {user} = useContext(Context);
     const { t } = useTranslation('translation', { keyPrefix: 'auth' });
+    const {networkError} = useToast();
 
     const click = async ({username, password}, actions) => {
         try {
@@ -27,7 +29,7 @@ const SignupForm = () => {
             if (isHandleableError(e.response.status, 409)) {
                 actions.setErrors({username: 'signUpFailed'});
             } else {
-                alert('Проблемы с сетью, попробуйте ещё раз...');
+                networkError();
             }
         }
     }

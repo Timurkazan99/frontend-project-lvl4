@@ -4,6 +4,8 @@ import AppRouter from "./components/AppRouter";
 import Navbar from "./components/NavBar";
 import {Context} from "./components/ContextProvider";
 import {Spinner} from "react-bootstrap";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
     const {user} = useContext(Context);
@@ -37,6 +39,17 @@ const App = () => {
             <div className="d-flex flex-column h-100">
                 <Navbar />
                 <AppRouter />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </div>
         </BrowserRouter>
     );

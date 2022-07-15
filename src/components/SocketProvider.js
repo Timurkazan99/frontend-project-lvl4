@@ -1,10 +1,20 @@
-import React, {createContext} from 'react';
+import React, {createContext, useEffect} from 'react';
 import useSocket from "../hooks/useSocket";
+import {io} from "socket.io-client";
 
 export const SocketContext = createContext(null);
 
 const SocketProvider = ({children}) => {
-    const socket = useSocket();
+    const socket = io('http://localhost:5000/', {
+        transports: [ "websocket" ]
+    });
+
+    const update = useSocket(socket);
+
+    useEffect(() => {
+        update();
+        return () => socket.disconnect();
+    });
 
     return (
         <SocketContext.Provider

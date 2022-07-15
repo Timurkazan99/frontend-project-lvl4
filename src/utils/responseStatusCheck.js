@@ -1,5 +1,5 @@
-export default function responseStatusCheck (response) {
+export default function responseStatusCheck (response, toast) {
     if(response.status !== 'ok') {
-        console.log(response.status);
+        toast();
     }
 }

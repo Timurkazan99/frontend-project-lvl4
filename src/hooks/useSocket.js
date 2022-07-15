@@ -1,33 +1,37 @@
-import {io} from "socket.io-client";
-import {useDispatch} from "react-redux";
+
+import {batch, useDispatch} from "react-redux";
 import {actions as messagesActions} from "../store/reducers/MessagesSlice";
 import {actions as channelsActions} from "../store/reducers/ChannelsSlice";
+import useToast from "./useToast";
 
 
-export default function useSocket () {
+export default function useSocket (socket) {
     const dispatch = useDispatch();
-    const socket = io('http://localhost:5000/', {
-        transports: [ "websocket" ]
-    });
+    const {createChannel, renamingChannel, removeChannel} = useToast();
 
-    socket.removeAllListeners();
+    return () => {
+        socket.removeAllListeners();
 
-    socket.on('newMessage', (payload) => {
-        dispatch(messagesActions.addMessage(payload));
-    });
+        socket.on('newMessage', (payload) => {
+            dispatch(messagesActions.addMessage(payload));
+        });
 
-    socket.on('newChannel', (payload) => {
-        dispatch(channelsActions.addChannel(payload));
-        dispatch(channelsActions.setActive(payload));
-    });
+        socket.on('newChannel', (payload) => {
+            batch(() => {
+                dispatch(channelsActions.addChannel(payload));
+                dispatch(channelsActions.setActive(payload));
+            });
+            createChannel(payload.name);
+        });
 
-    socket.on('removeChannel', (payload) => {
-        dispatch(channelsActions.removeChannel(payload.id));
-    });
+        socket.on('removeChannel', (payload) => {
+            dispatch(channelsActions.removeChannel(payload.id));
+            removeChannel();
+        });
 
-    socket.on('renameChannel', (payload) => {
-        dispatch(channelsActions.updateChannel({id: payload.id, changes: payload}));
-    });
-
-    return socket;
+        socket.on('renameChannel', (payload) => {
+            dispatch(channelsActions.updateChannel({id: payload.id, changes: payload}));
+            renamingChannel(payload.name);
+        });
+    }
 }
