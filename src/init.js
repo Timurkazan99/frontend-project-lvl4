@@ -7,7 +7,7 @@ import App from './App';
 import resources from "./locales";
 
 const rollbarConfig = {
-    accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
+    accessToken: '9d768f92059c42be804d318e4011ec9f',
     payload: {
         environment: 'production',
     },
@@ -29,7 +29,6 @@ const Init = async () => {
             }
         });
 
-    console.log('token', process.env.REACT_APP_ROLLBAR_TOKEN);
     filter.clearList();
     filter.add(filter.getDictionary('ru'));
     filter.add(filter.getDictionary('en'));
