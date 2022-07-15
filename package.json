@@ -2,6 +2,8 @@
   "name": "@hexlet/code",
   "version": "0.1.0",
   "proxy": "http://localhost:5001",
+  "type": "module",
+  "main": "./src/index.js",
   "private": true,
   "dependencies": {
     "@hexlet/chat-server": "^1.1.3",
