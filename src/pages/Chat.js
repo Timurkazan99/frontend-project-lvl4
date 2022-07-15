@@ -10,6 +10,7 @@ import ChatTab from "../components/ChatTab";
 import SocketProvider from "../components/SocketProvider";
 import ChannelModal from "../components/modals/ChannelModal";
 import useToast from "../hooks/useToast";
+import {useRollbar} from "@rollbar/react";
 
 const Chat = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Chat = () => {
     const {user} = useContext(Context);
     const channels = useSelector((state) => state.channels);
     const {networkError} = useToast();
+    const rollbar = useRollbar();
 
     useEffect(() => {
       if (!user.isAuth) {
@@ -24,6 +26,7 @@ const Chat = () => {
         return;
       }
 
+      rollbar.log('Connected')
       dispatch(thunkFetchData());
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -32,7 +35,9 @@ const Chat = () => {
         console.log(channels.error);
         if(channels.error) {
             networkError();
+            rollbar.error('Network error', channels.error)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [channels.error]);
 
     return (

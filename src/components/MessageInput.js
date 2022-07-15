@@ -1,11 +1,13 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import {Button, Form, InputGroup} from "react-bootstrap";
-import {SocketContext} from "./SocketProvider";
+import filter from 'leo-profanity';
 import {useFormik} from "formik";
-import responseStatusCheck from "../utils/responseStatusCheck";
-import {useSelector} from "react-redux";
-import {Context} from "./ContextProvider";
 import {useTranslation} from "react-i18next";
+import {useSelector} from "react-redux";
+import useStatusCheck from "../hooks/useStatusCheck";
+import {Context} from "./ContextProvider";
+import {SocketContext} from "./SocketProvider";
+
 
 const MessageInput = () => {
     const active = useSelector((state) => state.channels.active.id);
@@ -13,9 +15,10 @@ const MessageInput = () => {
     const socket = useContext(SocketContext);
     const messageRef = useRef(null);
     const { t } = useTranslation('translation', { keyPrefix: 'messages' });
+    const responseStatusCheck = useStatusCheck();
 
     const click = ({message}, actions) => {
-        socket.emit('newMessage', {body: message, channelId: active, 'username': user.name}, responseStatusCheck);
+        socket.emit('newMessage', {body: filter.clean(message), channelId: active, 'username': user.name}, responseStatusCheck);
         actions.resetForm( { 'message': '' });
     };
 

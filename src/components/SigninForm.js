@@ -9,6 +9,7 @@ import {CHAT_ROUTE} from "../utils/const";
 import {isHandleableError} from "../utils/handleErrorStatus";
 import {useTranslation} from "react-i18next";
 import useToast from "../hooks/useToast";
+import {useRollbar} from "@rollbar/react";
 
 const SigningForm = () => {
 
@@ -16,6 +17,7 @@ const SigningForm = () => {
     const {user} = useContext(Context);
     const { t } = useTranslation('translation', { keyPrefix: 'auth' });
     const {networkError} = useToast();
+    const rollbar = useRollbar();
 
     const click = async ({username, password}, actions) => {
         try {
@@ -29,6 +31,7 @@ const SigningForm = () => {
                 actions.setErrors({username: 'badUsername', password: 'badPassword'})
             } else {
                 networkError();
+                rollbar.error('Network error:', e);
             }
         }
     }

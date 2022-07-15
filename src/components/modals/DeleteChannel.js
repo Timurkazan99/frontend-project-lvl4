@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Button} from "react-bootstrap";
-import responseStatusCheck from "../../utils/responseStatusCheck";
+import useStatusCheck from "../../hooks/useStatusCheck";
 import {SocketContext} from "../SocketProvider";
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
@@ -10,6 +10,7 @@ const DeleteChannel = ({onHide}) => {
     const socket = useContext(SocketContext);
     const selected = useSelector((state) => state.channels.selected);
     const { t } = useTranslation('translation', { keyPrefix: 'channelModal' });
+    const responseStatusCheck = useStatusCheck();
 
     const click = () => {
         socket.emit(selected.eventName, {id: selected.id}, responseStatusCheck);
