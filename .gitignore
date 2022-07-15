@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+frontend/src/__fixtures__
+frontend/node_modules
 /node_modules
 /.pnp
 .pnp.js
@@ -23,5 +25,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-
-src/__fixtures__

@@ -16,7 +16,6 @@ const rollbarConfig = {
 };
 
 const Init = async () => {
-    console.log(start)
     const i18n = i18next.createInstance();
     await i18n
         .use(initReactI18next)
@@ -24,6 +23,7 @@ const Init = async () => {
             fallbackLng: 'ru',
             lng: 'ru',
             resources,
+            debug: true,
             react: {
                 useSuspense: false,
             }

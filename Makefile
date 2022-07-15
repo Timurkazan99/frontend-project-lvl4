@@ -1,27 +1,17 @@
-install: install-deps
-
-start-backend:
-	npx start-server -p 5001 -a 127.0.0.1
+install:
+	npm ci
 
 start-frontend:
-	npx webpack serve
+	make -C frontend start
 
-install-deps:
-	npm ci
+start-backend:
+	npx start-server
+
+start:
+	make start-backend & make start-frontend
+
+deploy:
+	git push heroku main
 
 build:
 	npm run build
-
-lint:
-	npx eslint . --ext js,jsx
-
-publish:
-	npm publish
-
-deploy:
-	git push heroku
-
-test:
-	npm test -s
-
-.PHONY: test
