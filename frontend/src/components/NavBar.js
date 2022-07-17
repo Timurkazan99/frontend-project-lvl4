@@ -20,7 +20,7 @@ const NavBar = () => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container className="d-flex justify-content-between">
-                <NavLink style={{color: "white"}} to={CHAT_ROUTE}>Slack chat</NavLink>
+                <NavLink style={{color: "white"}} to={CHAT_ROUTE}>Hexlet Chat</NavLink>
                 { user.isAuth ?
                     <div>
                         <span className="mx-3" style={{color: "white"}}>{user.name}</span>
