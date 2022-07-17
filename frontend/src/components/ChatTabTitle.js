@@ -7,7 +7,8 @@ function ChatTabTitle() {
 
   const active = useSelector((state) => state.channels.active);
   const messages = useSelector((state) => state.messages);
-  const filteredMessages = Object.values(messages.entities).filter((m) => m.channelId === active.id);
+  const filteredMessages = Object.values(messages.entities)
+    .filter((m) => m.channelId === active.id);
 
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small">

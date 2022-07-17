@@ -17,8 +17,13 @@ function ChannelList() {
           key={c.id}
           variant="light"
           as={() =>
-              <ChannelListItem id={c.id} active={channels.active.id} name={c.name} removable={c.removable} />
-          }
+            <ChannelListItem
+              id={c.id}
+              active={channels.active.id}
+              name={c.name}
+              removable={c.removable}
+            />
+        }
         />
       ))}
     </ListGroup>
