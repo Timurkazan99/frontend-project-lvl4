@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import routes from '../routes';
 import { NOTFOUND_ROUTE } from '../utils/const.js';
 
+/* eslint-disable react/jsx-wrap-multilines */
 function AppRouter() {
   return (
     <Routes>
@@ -12,11 +13,11 @@ function AppRouter() {
           path={path}
           element={<Component />}
           exact
-        />)
-      )}
+        />))}
       <Route path="*" element={<Navigate to={NOTFOUND_ROUTE} />} />
     </Routes>
   );
 }
+/* eslint-enable react/jsx-wrap-multilines */
 
 export default AppRouter;

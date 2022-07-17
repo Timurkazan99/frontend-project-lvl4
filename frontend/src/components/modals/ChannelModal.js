@@ -20,7 +20,7 @@ const ChannelModal = () => {
     },
     renameChannel: {
       title: t('renameTitle'),
-      Component: () => <ChannelForm eventName={eventName} onHide={close} s/>,
+      Component: () => <ChannelForm eventName={eventName} onHide={close} />,
     },
     removeChannel: {
       title: t('deleteTitle'),
