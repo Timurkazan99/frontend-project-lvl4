@@ -76,7 +76,7 @@ const ru = {
             sentencesStart: "Канал",
             sentencesAddingEnd: "создан",
             sentencesRenamingEnd: "переименован",
-            sentencesRemovingEnd: "удален",
+            sentencesRemovingEnd: "удалён",
             errorNetwork: "Ошибка соединения",
             badWord: "Не ругайся!"
         },
