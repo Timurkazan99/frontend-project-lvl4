@@ -28,7 +28,7 @@ const SigningForm = () => {
             navigate(CHAT_ROUTE);
         } catch (e) {
             if (isHandleableError(e.response.status, 401)) {
-                actions.setErrors({username: 'badUsername', password: 'badPassword'})
+                actions.setErrors({username: 'badUser', password: 'badUser'})
             } else {
                 networkError();
                 rollbar.error('Network error:', e);

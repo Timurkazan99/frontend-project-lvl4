@@ -19,8 +19,9 @@ const SignupForm = () => {
     const {networkError} = useToast();
     const rollbar = useRollbar();
 
-    const click = async ({username, password}, actions) => {
+    const click = async ({username, password, errors}, actions) => {
         try {
+            console.log(errors);
             let data;
             data = await registration(username, password);
             console.log(data);

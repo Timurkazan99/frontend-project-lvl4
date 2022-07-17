@@ -10,15 +10,14 @@ const ru = {
         auth: {
             // Errors
             required: 'Поле должно быть заполнено',
-            badUsername: 'Проверьте правильность логина',
-            badPassword: 'Проверьте правильность пароля',
+            badUser: 'Неверные имя пользователя или пароль',
             lengthUsername: 'От 3 до 20 символов',
             minPassword: 'Не менее 6 символов',
             samePassword: 'Пароли должны совпадать',
             signUpFailed: 'Пользователь с таким именем уже существует',
 
             // Fields
-            username: 'Ваш ник',
+            username: 'Имя пользователя',
             password: 'Пароль',
             confirmPassword: 'Подтвердите пароль',
 
@@ -32,7 +31,7 @@ const ru = {
 
             // Footer
             notRegistered: 'Нет аккаунта?',
-            registration: 'Зарегистрируйтесь',
+            registration: 'Регистрация',
             registered: 'Есть аккаунт?',
             authorization: 'Авторизуйтесь'
 
@@ -75,7 +74,7 @@ const ru = {
         toastText: {
             sentencesStart: "Канал",
             sentencesAddingEnd: "создан",
-            sentencesRenamingEnd: "переименован на:",
+            sentencesRenamingEnd: "переименован",
             sentencesRemovingEnd: "удален",
             errorNetwork: "Ошибка соединения",
             badWord: "Не ругайся!"

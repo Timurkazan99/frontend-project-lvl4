@@ -21,7 +21,4 @@ export const SignupSchema = Yup.object({
         .required('required'),
     passwordConfirmation: Yup.string()
         .oneOf([Yup.ref('password'), null], 'samePassword')
-        .required('required')
 });
-
-

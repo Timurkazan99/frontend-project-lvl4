@@ -4,8 +4,8 @@ import {toast} from "react-toastify";
 export default function useToast () {
     const { t } = useTranslation('translation', { keyPrefix: 'toastText' });
 
-    const createChannel = (name) => toast.info(`${t('sentencesStart')} ${name} ${t('sentencesAddingEnd')}`);
-    const renamingChannel = (name) => toast.info(`${t('sentencesStart')} ${t('sentencesRenamingEnd')} ${name}`);
+    const createChannel = () => toast.info(`${t('sentencesStart')} ${t('sentencesAddingEnd')}`);
+    const renamingChannel = () => toast.info(`${t('sentencesStart')} ${t('sentencesRenamingEnd')}`);
     const removeChannel = () => toast.info(`${t('sentencesStart')} ${t('sentencesRemovingEnd')}`);
     const networkError = () => toast.error(t('errorNetwork'));
 
