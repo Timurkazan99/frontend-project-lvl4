@@ -1,10 +1,11 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import { thunkFetchData } from '../thunks/fetchData';
+import thunkFetchData from '../thunks/fetchData';
 import { actions as channelActions } from './ChannelsSlice';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState({ loading: null, error: null });
 
+/* eslint-disable no-param-reassign */
 export const messagesSlice = createSlice({
   name: 'messages',
   initialState,
@@ -30,12 +31,13 @@ export const messagesSlice = createSlice({
       .addCase(channelActions.removeChannel, (state, { payload: id }) => {
         const ids = Object.values(state.entities)
           .filter(({ channelId }) => channelId === id)
-          .map(({ id }) => id);
+          .map(({ id: messageId }) => messageId);
         messagesAdapter.removeMany(state, ids);
       });
   },
 });
+/* eslint-enable no-param-reassign */
 
 export const selectors = messagesAdapter.getSelectors((state) => state.messages);
 export const { actions } = messagesSlice;
-export default messagesSlice.reducer;
+export const { reducer } = messagesSlice;

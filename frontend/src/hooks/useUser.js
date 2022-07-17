@@ -7,9 +7,9 @@ export default function useUser() {
   return {
     name,
     isAuth,
-    setName: (name) => {
-      localStorage.setItem('username', name);
-      setName(name);
+    setName: (newName) => {
+      localStorage.setItem('username', newName);
+      setName(newName);
     },
     setIsAuth,
   };

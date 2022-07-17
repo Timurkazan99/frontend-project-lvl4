@@ -1,5 +1,5 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import { thunkFetchData } from '../thunks/fetchData';
+import thunkFetchData from '../thunks/fetchData';
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
@@ -9,6 +9,7 @@ const initialState = channelsAdapter.getInitialState({
   selected: { eventName: 'newChannel' },
 });
 
+/* eslint-disable no-param-reassign */
 export const channelsSlice = createSlice({
   name: 'channels',
   initialState,
@@ -44,7 +45,8 @@ export const channelsSlice = createSlice({
       });
   },
 });
+/* eslint-enable no-param-reassign */
 
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
 export const { actions } = channelsSlice;
-export default channelsSlice.reducer;
+export const { reducer } = channelsSlice;

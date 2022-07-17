@@ -8,7 +8,7 @@ import { LoginSchema } from '../utils/validator';
 import { Context } from './ContextProvider';
 import { login } from '../http/userAPI';
 import { CHAT_ROUTE } from '../utils/const';
-import { isHandleableError } from '../utils/handleErrorStatus';
+import isHandleableError from '../utils/handleErrorStatus';
 import useToast from '../hooks/useToast';
 
 function SigningForm() {
@@ -20,8 +20,7 @@ function SigningForm() {
 
   const click = async ({ username, password }, actions) => {
     try {
-      let data;
-      data = await login(username, password);
+      const data = await login(username, password);
       user.setName(data.username);
       user.setIsAuth(true);
       navigate(CHAT_ROUTE);

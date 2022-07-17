@@ -5,7 +5,7 @@ import Chat from './pages/Chat.js';
 import Auth from './pages/Auth.js';
 import ErrorPage from './pages/ErrorPage.js';
 
-export const routes = [
+const routes = [
   {
     path: CHAT_ROUTE,
     Component: Chat,
@@ -23,3 +23,5 @@ export const routes = [
     Component: ErrorPage,
   },
 ];
+
+export default routes;

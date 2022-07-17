@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { show: false };
 
+/* eslint-disable no-param-reassign */
 export const messagesSlice = createSlice({
   name: 'modal',
   initialState,
@@ -14,6 +15,7 @@ export const messagesSlice = createSlice({
     },
   },
 });
+/* eslint-enable no-param-reassign */
 
 export const { onShow, onHide } = messagesSlice.actions;
-export default messagesSlice.reducer;
+export const { reducer } = messagesSlice;

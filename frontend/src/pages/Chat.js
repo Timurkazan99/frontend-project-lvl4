@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useRollbar } from '@rollbar/react';
 import { Context } from '../components/ContextProvider';
 import { LOGIN_ROUTE } from '../utils/const';
-import { thunkFetchData } from '../store/thunks/fetchData';
+import thunkFetchData from '../store/thunks/fetchData';
 import ChannelContainer from '../components/ChannelContainer';
 import ChatTab from '../components/ChatTab';
 import SocketProvider from '../components/SocketProvider';

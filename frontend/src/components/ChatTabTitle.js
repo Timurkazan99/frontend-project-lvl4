@@ -17,7 +17,11 @@ function ChatTabTitle() {
           {active.name}
         </b>
       </p>
-      <span className="text-muted">{t('messages', { count: filteredMessages.length })}</span>
+      <span
+          className="text-muted"
+      >
+          {t('messages', { count: filteredMessages.length })}
+      </span>
     </div>
   );
 }

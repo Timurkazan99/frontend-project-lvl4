@@ -8,7 +8,7 @@ import { SignupSchema } from '../utils/validator';
 import { Context } from './ContextProvider';
 import { registration } from '../http/userAPI';
 import { CHAT_ROUTE } from '../utils/const';
-import { isHandleableError } from '../utils/handleErrorStatus';
+import isHandleableError from '../utils/handleErrorStatus';
 import useToast from '../hooks/useToast';
 
 function SignupForm() {
@@ -21,8 +21,7 @@ function SignupForm() {
   const click = async ({ username, password, errors }, actions) => {
     try {
       console.log(errors);
-      let data;
-      data = await registration(username, password);
+      const data = await registration(username, password);
       console.log(data);
       user.setName(data.username);
       user.setIsAuth(true);
