@@ -6,14 +6,13 @@ import { NOTFOUND_ROUTE } from '../utils/const.js';
 function AppRouter() {
   return (
     <Routes>
-      {routes.map(({ path, Component }) => {
-        return <Route
+      {routes.map(({ path, Component }) =>
+        <Route
           key={path}
           path={path}
           element={<Component />}
           exact
         />
-      }
       )
       }
       <Route path="*" element={<Navigate to={NOTFOUND_ROUTE} />} />

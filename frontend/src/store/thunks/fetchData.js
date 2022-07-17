@@ -3,9 +3,7 @@ import fetchData from '../../http/dataAPI';
 
 const thunkFetchData = createAsyncThunk(
   'fetch/data',
-  async () => {
-    return await fetchData();
-  },
+  async () => await fetchData(),
 );
 
 export default thunkFetchData;
