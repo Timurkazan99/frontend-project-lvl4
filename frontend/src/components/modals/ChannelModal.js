@@ -6,7 +6,6 @@ import ChannelForm from './ChannelForm';
 import DeleteChannel from './DeleteChannel';
 import { onHide } from '../../store/reducers/ModalSlice';
 
-
 const ChannelModal = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.modal.show);
@@ -17,11 +16,11 @@ const ChannelModal = () => {
   const mapping = {
     newChannel: {
       title: t('createTitle'),
-      Component: () => <ChannelForm eventName={eventName} onHide={close}/>,
+      Component: () => <ChannelForm eventName={eventName} onHide={close} />,
     },
     renameChannel: {
       title: t('renameTitle'),
-      Component: () => <ChannelForm eventName={eventName} onHide={close}/>,
+      Component: () => <ChannelForm eventName={eventName} onHide={close} s/>,
     },
     removeChannel: {
       title: t('deleteTitle'),
