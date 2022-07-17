@@ -49,7 +49,7 @@ const SigningForm = () => {
         <Form noValidate onSubmit={formik.handleSubmit}>
             <FloatingLabel
                 controlId="username"
-                label={t('username')}
+                label={t('loginUsername')}
                 className="mt-3"
             >
                 <Form.Control
