@@ -25,7 +25,9 @@ function ChannelList() {
             />
         }
         />
-      ))}
+      )
+      )
+      }
     </ListGroup>
   );
 }

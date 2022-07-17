@@ -1,10 +1,11 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import ChannelForm from './ChannelForm';
 import DeleteChannel from './DeleteChannel';
-import { useDispatch, useSelector } from 'react-redux';
 import { onHide } from '../../store/reducers/ModalSlice';
-import { useTranslation } from 'react-i18next';
+
 
 const ChannelModal = () => {
   const dispatch = useDispatch();
@@ -14,21 +15,21 @@ const ChannelModal = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'channelModal' });
 
   const mapping = {
-    'newChannel': {
+    newChannel: {
       title: t('createTitle'),
-      Component: () =>  <ChannelForm eventName={eventName} onHide={close}/>
+      Component: () => <ChannelForm eventName={eventName} onHide={close}/>,
     },
-    'renameChannel': {
+    renameChannel: {
       title: t('renameTitle'),
-      Component: () => <ChannelForm eventName={eventName} onHide={close}/>
+      Component: () => <ChannelForm eventName={eventName} onHide={close}/>,
     },
-    'removeChannel': {
+    removeChannel: {
       title: t('deleteTitle'),
-      Component: () => <DeleteChannel onHide={close} />
+      Component: () => <DeleteChannel onHide={close} />,
     },
-  }
+  };
 
-  const {title, Component} = mapping?.[eventName];
+  const { title, Component } = mapping?.[eventName];
 
   return (
     <Modal
