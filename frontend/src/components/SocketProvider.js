@@ -5,8 +5,8 @@ import useSocket from '../hooks/useSocket';
 export const SocketContext = createContext(null);
 
 function SocketProvider({ children }) {
-  console.log(process.env.REACT_APP_HOST);
-  const socket = io(process.env.REACT_APP_HOST, {
+  const host = process.env.REACT_APP_HOST || 'http://localhost:5001'
+  const socket = io(host, {
     transports: ['websocket'],
   });
 
