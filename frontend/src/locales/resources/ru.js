@@ -18,6 +18,7 @@ const ru = {
 
             // Fields
             username: 'Имя пользователя',
+            loginUsername: 'Ваш ник',
             password: 'Пароль',
             confirmPassword: 'Подтвердите пароль',
 

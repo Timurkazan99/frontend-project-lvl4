@@ -55,7 +55,7 @@ const SigningForm = () => {
                 <Form.Control
                     name="username"
                     type="username"
-                    placeholder={t('username')}
+                    placeholder={t('loginUsername')}
                     onInput={formik.handleChange}
                     isInvalid={formik.touched.username && formik.errors.username}
                 />
