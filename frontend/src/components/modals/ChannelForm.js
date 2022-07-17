@@ -42,12 +42,12 @@ const ChannelForm = ({onHide}) => {
                 onSubmit={formik.handleSubmit}
             >
                 <div>
+                    <Form.Label htmlFor="channelName" visuallyHidden>{t('fieldLabel')}</Form.Label>
                     <Form.Control
                         className="mb-2"
                         id="channelName"
                         name="channelName"
                         placeholder={t('fieldPlaceholder')}
-                        aria-label={t('fieldLabel')}
                         value={formik.values.channelName}
                         ref={inputRef}
                         onChange={formik.handleChange}
