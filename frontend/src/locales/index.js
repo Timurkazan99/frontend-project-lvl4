@@ -1,7 +1,7 @@
-import ruTranslation from './resources/ru'
+import ruTranslation from './resources/ru';
 
 const resources = {
-    ru: ruTranslation,
+  ru: ruTranslation,
 };
 
 export default resources;
