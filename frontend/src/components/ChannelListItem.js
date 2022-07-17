@@ -33,7 +33,9 @@ const ChannelListItem = ({id, active, name, removable}) => {
                             variant={id === active ? "secondary" : "light"}
                             id="dropdown-split-basic"
                             aria-label={t('control')}
-                        />
+                        >
+                            <span className="visually-hidden">Управление каналом</span>
+                        </Dropdown.Toggle>
                         <Dropdown.Menu>
                             <Dropdown.Item onClick={() => changeChannel('removeChannel')}>{t('remove')}</Dropdown.Item>
                             <Dropdown.Item onClick={() => changeChannel('renameChannel')}>{t('rename')}</Dropdown.Item>
