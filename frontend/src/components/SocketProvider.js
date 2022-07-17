@@ -5,7 +5,7 @@ import {io} from "socket.io-client";
 export const SocketContext = createContext(null);
 
 const SocketProvider = ({children}) => {
-    const socket = io('http://localhost:5000/', {
+    const socket = io('http://localhost:5001/', {
         transports: [ "websocket" ]
     });
 
