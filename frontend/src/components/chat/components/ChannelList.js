@@ -8,7 +8,6 @@ import {actions} from "../../../store/reducers/ChannelsSlice";
 function ChannelList() {
   const channels = useSelector((state) => state.channels);
   const dispatch = useDispatch();
-  const chooseChannel = () => { dispatch(actions.setActive({ id, name, removable })); };
 
   return (
     <ListGroup
