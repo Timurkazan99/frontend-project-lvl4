@@ -2,7 +2,7 @@ import React from 'react';
 import ChannelList from './ChannelList';
 import ChannelHeader from './ChannelHeader';
 
-function ChannelContainer() {
+function ChannelTabDesktop() {
   return (
     <>
       <ChannelHeader />
@@ -11,4 +11,4 @@ function ChannelContainer() {
   );
 }
 
-export default ChannelContainer;
+export default ChannelTabDesktop;

@@ -4,9 +4,9 @@ import filter from 'leo-profanity';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import useStatusCheck from '../hooks/useStatusCheck';
-import { Context } from './ContextProvider';
-import { SocketContext } from './SocketProvider';
+import useStatusCheck from '../../../hooks/useStatusCheck';
+import { Context } from '../../ContextProvider';
+import { SocketContext } from '../../SocketProvider';
 
 function MessageInput() {
   const active = useSelector((state) => state.channels.active.id);
@@ -33,7 +33,7 @@ function MessageInput() {
   });
 
   return (
-    <div className="mt-auto px-5 py-3">
+    <div className="w-100 mt-auto px-1">
       <Form
         className="p-1 border border-primary rounded-pill"
         noValidate

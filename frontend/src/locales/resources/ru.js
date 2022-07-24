@@ -40,6 +40,7 @@ const ru = {
     channels: {
       title: 'Каналы',
       control: 'Управление каналом',
+      list: 'Список каналов',
       rename: 'Переименовать',
       remove: 'Удалить',
     },

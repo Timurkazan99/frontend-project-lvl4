@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { actions } from '../store/reducers/ChannelsSlice';
-import { onShow } from '../store/reducers/ModalSlice';
+import { actions } from '../../../store/reducers/ChannelsSlice';
+import { onShow } from '../../../store/reducers/UiSlice';
 
 function ChannelHeader() {
   const dispatch = useDispatch();

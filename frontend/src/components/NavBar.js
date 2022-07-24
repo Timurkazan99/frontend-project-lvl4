@@ -24,11 +24,12 @@ function NavBar() {
         { user.isAuth
           ? (
             <div>
-              <span className="mx-3" style={{ color: 'white' }}>{user.name}</span>
+              <span className="mx-3" style={{ color: 'white' }}>Ваш ник: {user.name}</span>
               <Button variant="primary" onClick={logout}>{t('logOut')}</Button>
             </div>
           )
-          : null}
+          : null
+        }
       </Container>
     </Navbar>
   );
