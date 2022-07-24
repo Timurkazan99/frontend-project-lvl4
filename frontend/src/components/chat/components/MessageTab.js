@@ -1,16 +1,18 @@
 import React from 'react';
-import ChatTabTitle from './ChatTabTitle';
+import MessageTabHeaderDesktop from './MessageTabHeaderDesktop';
 import MessageBox from './MessageBox';
 import MessageInput from './MessageInput';
 
-function ChatTab() {
+function MessageTab() {
   return (
     <div className="d-flex flex-column h-100">
-      <ChatTabTitle />
+      <div className="bg-light mb-4 p-3 shadow-sm small">
+        <MessageTabHeaderDesktop />
+      </div>
       <MessageBox />
       <MessageInput />
     </div>
   );
 }
 
-export default ChatTab;
+export default MessageTab;

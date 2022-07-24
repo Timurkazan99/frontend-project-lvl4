@@ -5,7 +5,7 @@ const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
   loading: null,
   error: null,
-  active: { name: 'general', id: 1 },
+  active: { name: 'general', id: 1, removable: false },
   selected: { eventName: 'newChannel' },
 });
 

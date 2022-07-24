@@ -29,6 +29,7 @@ export default function useSocket(socket) {
 
     socket.on('renameChannel', (payload) => {
       dispatch(channelsActions.updateChannel({ id: payload.id, changes: payload }));
+      dispatch(channelsActions.setActive(payload));
       renamingChannel(payload.name);
     });
   };

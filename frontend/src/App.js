@@ -6,10 +6,12 @@ import AppRouter from './components/AppRouter';
 import Navbar from './components/NavBar';
 import { Context } from './components/ContextProvider';
 import 'react-toastify/dist/ReactToastify.css';
+import useCheckMobileScreen from "./hooks/useCheckMobileScreen";
 
 function App() {
-  const { user } = useContext(Context);
+  const { user, device } = useContext(Context);
   const [isLoading, setIsLoading] = useState(true);
+  const isMobile = useCheckMobileScreen();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -20,6 +22,7 @@ function App() {
     } else {
       user.setIsAuth(false);
     }
+    device.setIsMobile(isMobile);
     setIsLoading(false);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,7 +40,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column h-100">
-        <Navbar />
+        {isMobile ? null : <Navbar/>}
         <AppRouter />
         <ToastContainer
           position="top-right"
