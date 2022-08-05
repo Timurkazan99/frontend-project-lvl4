@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ChannelSchema } from '../../utils/validator';
-import { SocketContext } from '../SocketProvider';
+import { SocketContext } from '../SocketProvider.jsx';
 import useStatusCheck from '../../hooks/useStatusCheck';
 
 function ChannelForm({ onHide }) {

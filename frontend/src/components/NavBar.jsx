@@ -3,7 +3,7 @@ import { Button, Container, Navbar } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CHAT_ROUTE, LOGIN_ROUTE } from '../utils/const';
-import { Context } from './ContextProvider';
+import { Context } from './ContextProvider.jsx';
 
 function NavBar() {
   const { user } = useContext(Context);
@@ -24,12 +24,15 @@ function NavBar() {
         { user.isAuth
           ? (
             <div>
-              <span className="mx-3" style={{ color: 'white' }}>Ваш ник: {user.name}</span>
+              <span className="mx-3" style={{ color: 'white' }}>
+                Ваш ник:
+                {' '}
+                {user.name}
+              </span>
               <Button variant="primary" onClick={logout}>{t('logOut')}</Button>
             </div>
           )
-          : null
-        }
+          : null }
       </Container>
     </Navbar>
   );

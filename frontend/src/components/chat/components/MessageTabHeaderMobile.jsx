@@ -1,10 +1,10 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import {Button, Dropdown} from "react-bootstrap";
-import ChannelControl from "./ChannelControl";
-import MessageTabHeaderDesktop from "./MessageTabHeaderDesktop";
-import {toList} from "../../../store/reducers/UiSlice"
+import { Button, Dropdown } from 'react-bootstrap';
+import ChannelControl from './ChannelControl.jsx';
+import MessageTabHeaderDesktop from './MessageTabHeaderDesktop.jsx';
+import { toList } from '../../../store/reducers/UiSlice';
 
 function MessageTabHeaderMobile() {
   const dispatch = useDispatch();
@@ -18,22 +18,23 @@ function MessageTabHeaderMobile() {
       <Button
         variant="outline-primary"
         className="p-0 border-0 align-self-center"
-        style={{height: "35px", width: "35px", marginRight: "16px"}}
+        style={{ height: '35px', width: '35px', marginRight: '16px' }}
         onClick={() => dispatch(toList())}
       >
-        <img src="/back.svg" className="p-0" height="25px" width="25px"/>
+        <img src="assets/back.svg" alt="back" className="p-0" height="25px" width="25px" />
         <span className="visually-hidden">{t('list')}</span>
       </Button>
       <div className="flex-grow-1">
         <MessageTabHeaderDesktop />
       </div>
       {
-        active.removable ?
-          <Dropdown>
-            <ChannelControl id={active.id} name={active.name} active="none"/>
-          </Dropdown>
-          :
-          null
+        active.removable
+          ? (
+            <Dropdown>
+              <ChannelControl id={active.id} name={active.name} active="none" />
+            </Dropdown>
+          )
+          : null
       }
     </div>
   );

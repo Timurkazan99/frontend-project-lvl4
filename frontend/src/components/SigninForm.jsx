@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useRollbar } from '@rollbar/react';
 import { LoginSchema } from '../utils/validator';
-import { Context } from './ContextProvider';
+import { Context } from './ContextProvider.jsx';
 import { login } from '../http/userAPI';
 import { CHAT_ROUTE } from '../utils/const';
 import isHandleableError from '../utils/handleErrorStatus';

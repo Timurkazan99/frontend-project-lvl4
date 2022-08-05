@@ -3,8 +3,8 @@ import { Card, Container } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
-import SigningForm from '../components/SigninForm';
-import SignupForm from '../components/SignupForm';
+import SigningForm from '../components/SigninForm.jsx';
+import SignupForm from '../components/SignupForm.jsx';
 
 function Auth() {
   const location = useLocation();

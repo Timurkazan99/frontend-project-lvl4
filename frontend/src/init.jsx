@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import filter from 'leo-profanity';
-import App from './App';
+import App from './App.jsx';
 import resources from './locales';
 
 const rollbarConfig = {

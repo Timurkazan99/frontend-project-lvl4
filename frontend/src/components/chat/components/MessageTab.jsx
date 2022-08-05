@@ -1,7 +1,7 @@
 import React from 'react';
-import MessageTabHeaderDesktop from './MessageTabHeaderDesktop';
-import MessageBox from './MessageBox';
-import MessageInput from './MessageInput';
+import MessageTabHeaderDesktop from './MessageTabHeaderDesktop.jsx';
+import MessageBox from './MessageBox.jsx';
+import MessageInput from './MessageInput.jsx';
 
 function MessageTab() {
   return (

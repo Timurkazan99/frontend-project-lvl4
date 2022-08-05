@@ -1,9 +1,9 @@
 import {
   CHAT_ROUTE, LOGIN_ROUTE, NOTFOUND_ROUTE, REGISTRATION_ROUTE,
 } from './utils/const.js';
-import Chat from './pages/Chat.js';
-import Auth from './pages/Auth.js';
-import ErrorPage from './pages/ErrorPage.js';
+import Chat from './pages/Chat.jsx';
+import Auth from './pages/Auth.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 const routes = [
   {

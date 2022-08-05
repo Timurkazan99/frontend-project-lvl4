@@ -24,5 +24,7 @@ export const UiSlice = createSlice({
 });
 /* eslint-enable no-param-reassign */
 
-export const { onShow, onHide, toChat, toList } = UiSlice.actions;
+export const {
+  onShow, onHide, toChat, toList,
+} = UiSlice.actions;
 export const { reducer } = UiSlice;

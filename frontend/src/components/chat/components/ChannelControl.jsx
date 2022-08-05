@@ -1,17 +1,15 @@
 import React from 'react';
-import {Dropdown} from "react-bootstrap";
-import {useDispatch} from "react-redux";
-import {useTranslation} from "react-i18next";
-import {actions} from "../../../store/reducers/ChannelsSlice";
-import {onShow} from "../../../store/reducers/UiSlice";
+import { Dropdown } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { actions } from '../../../store/reducers/ChannelsSlice';
+import { onShow } from '../../../store/reducers/UiSlice';
 
-const ChannelControl = ({id, active, name}) => {
-
+function ChannelControl({ id, active, name }) {
   const dispatch = useDispatch();
   const { t } = useTranslation('translation', { keyPrefix: 'channels' });
 
   const changeChannel = (eventName) => {
-    console.log("click")
     dispatch(actions.setSelected({ eventName, id, name }));
     dispatch(onShow());
   };
@@ -32,6 +30,6 @@ const ChannelControl = ({id, active, name}) => {
       </Dropdown.Menu>
     </>
   );
-};
+}
 
 export default ChannelControl;

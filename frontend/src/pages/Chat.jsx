@@ -2,15 +2,15 @@ import React, { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useRollbar } from '@rollbar/react';
-import { Context } from '../components/ContextProvider';
+import { Container } from 'react-bootstrap';
+import { Context } from '../components/ContextProvider.jsx';
 import { LOGIN_ROUTE } from '../utils/const';
 import thunkFetchData from '../store/thunks/fetchData';
-import SocketProvider from '../components/SocketProvider';
+import SocketProvider from '../components/SocketProvider.jsx';
 import useToast from '../hooks/useToast';
-import DesktopChat from "../components/chat/DesktopChat";
-import ChannelModal from "../components/modals/ChannelModal";
-import { Container } from "react-bootstrap";
-import MobileChat from "../components/chat/MobileChat";
+import DesktopChat from '../components/chat/DesktopChat.jsx';
+import ChannelModal from '../components/modals/ChannelModal.jsx';
+import MobileChat from '../components/chat/MobileChat.jsx';
 
 function Chat() {
   const dispatch = useDispatch();
@@ -42,10 +42,10 @@ function Chat() {
 
   return (
     <SocketProvider>
-        <Container className="h-100 my-2 overflow-hidden rounded shadow">
-          {device.isMobile ? <MobileChat/> : <DesktopChat/>}
-          <ChannelModal />
-        </Container>
+      <Container className="h-100 my-2 overflow-hidden rounded shadow">
+        { device.isMobile ? <MobileChat /> : <DesktopChat /> }
+        <ChannelModal />
+      </Container>
     </SocketProvider>
   );
 }

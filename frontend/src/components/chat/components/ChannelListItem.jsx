@@ -2,16 +2,16 @@ import React from 'react';
 import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../../store/reducers/ChannelsSlice';
-import ChannelControl from "./ChannelControl";
+import ChannelControl from './ChannelControl.jsx';
 
 function ChannelListItem({
-  id, active, name, removable, onClick
+  id, active, name, removable,
 }) {
   const dispatch = useDispatch();
   const chooseChannel = () => { dispatch(actions.setActive({ id, name, removable })); };
 
   return (
-    <Dropdown as={ButtonGroup}>
+    <Dropdown as={ButtonGroup} className="w-100">
       <Button
         onClick={chooseChannel}
         variant={id === active ? 'secondary' : 'light'}
@@ -21,11 +21,10 @@ function ChannelListItem({
         {' '}
         {name}
       </Button>
-
       {
         removable
           ? (
-            <ChannelControl active={active} id={id} name={name}/>
+            <ChannelControl active={active} id={id} name={name} />
           )
           : null
       }

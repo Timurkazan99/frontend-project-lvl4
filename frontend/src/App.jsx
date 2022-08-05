@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
-import AppRouter from './components/AppRouter';
-import Navbar from './components/NavBar';
-import { Context } from './components/ContextProvider';
+import AppRouter from './components/AppRouter.jsx';
+import Navbar from './components/NavBar.jsx';
+import { Context } from './components/ContextProvider.jsx';
 import 'react-toastify/dist/ReactToastify.css';
-import useCheckMobileScreen from "./hooks/useCheckMobileScreen";
+import useCheckMobileScreen from './hooks/useCheckMobileScreen';
 
 function App() {
   const { user, device } = useContext(Context);
@@ -40,7 +40,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column h-100">
-        {isMobile ? null : <Navbar/>}
+        { isMobile ? null : <Navbar /> }
         <AppRouter />
         <ToastContainer
           position="top-right"

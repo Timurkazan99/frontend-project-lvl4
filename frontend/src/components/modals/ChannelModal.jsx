@@ -2,11 +2,11 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import ChannelForm from './ChannelForm';
-import DeleteChannel from './DeleteChannel';
+import ChannelForm from './ChannelForm.jsx';
+import DeleteChannel from './DeleteChannel.jsx';
 import { onHide } from '../../store/reducers/UiSlice';
 
-const ChannelModal = () => {
+function ChannelModal() {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.show);
   const eventName = useSelector((state) => state.channels.selected.eventName);
@@ -28,7 +28,7 @@ const ChannelModal = () => {
     },
   };
 
-  const { title, Component } = mapping?.[eventName];
+  const { title, Component } = mapping?.[eventName] || null;
 
   return (
     <Modal
@@ -42,10 +42,10 @@ const ChannelModal = () => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Component  eventName={eventName} onHide={close} />
+        <Component eventName={eventName} onHide={close} />
       </Modal.Body>
     </Modal>
   );
-};
+}
 
 export default ChannelModal;

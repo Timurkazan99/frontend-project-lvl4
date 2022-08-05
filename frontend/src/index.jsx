@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ContextProvider from './components/ContextProvider';
-import init from './init';
+import ContextProvider from './components/ContextProvider.jsx';
+import init from './init.jsx';
 
 const app = async () => {
   // eslint-disable-next-line no-undef

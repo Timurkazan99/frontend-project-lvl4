@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import useStatusCheck from '../../hooks/useStatusCheck';
-import { SocketContext } from '../SocketProvider';
+import { SocketContext } from '../SocketProvider.jsx';
 
 function DeleteChannel({ onHide }) {
   const socket = useContext(SocketContext);

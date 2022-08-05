@@ -5,8 +5,8 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import useStatusCheck from '../../../hooks/useStatusCheck';
-import { Context } from '../../ContextProvider';
-import { SocketContext } from '../../SocketProvider';
+import { Context } from '../../ContextProvider.jsx';
+import { SocketContext } from '../../SocketProvider.jsx';
 
 function MessageInput() {
   const active = useSelector((state) => state.channels.active.id);
