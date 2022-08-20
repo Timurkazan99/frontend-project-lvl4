@@ -19,8 +19,10 @@ function Chat() {
   const channels = useSelector((state) => state.channels);
   const { networkError } = useToast();
   const rollbar = useRollbar();
+  const classes = "h-100 overflow-hidden rounded";
+  const forMobile = device.isMobile ? "my-4 p-0" : "shadow border my-2";
 
-  useEffect(() => {
+    useEffect(() => {
     if (!user.isAuth) {
       navigate(LOGIN_ROUTE);
       return;
@@ -42,7 +44,7 @@ function Chat() {
 
   return (
     <SocketProvider>
-      <Container className="h-100 my-2 overflow-hidden rounded shadow">
+      <Container className={ `${classes} ${forMobile}` }>
         { device.isMobile ? <MobileChat /> : <DesktopChat /> }
         <ChannelModal />
       </Container>

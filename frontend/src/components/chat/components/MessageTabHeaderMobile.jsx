@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Button, Dropdown } from 'react-bootstrap';
 import ChannelControl from './ChannelControl.jsx';
-import MessageTabHeaderDesktop from './MessageTabHeaderDesktop.jsx';
+import MessageTabHeaderContent from './MessageTabHeaderContent.jsx';
 import { toList } from '../../../store/reducers/UiSlice';
 
 function MessageTabHeaderMobile() {
@@ -13,7 +13,7 @@ function MessageTabHeaderMobile() {
 
   return (
     <div
-      className="bg-light mb-4 px-2 py-2 shadow-sm small d-flex justify-content-between"
+      className="bg-light mb-4 p-2 border-bottom small d-flex justify-content-between"
     >
       <Button
         variant="outline-primary"
@@ -25,7 +25,7 @@ function MessageTabHeaderMobile() {
         <span className="visually-hidden">{t('list')}</span>
       </Button>
       <div className="flex-grow-1">
-        <MessageTabHeaderDesktop />
+        <MessageTabHeaderContent />
       </div>
       {
         active.removable

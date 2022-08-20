@@ -15,8 +15,8 @@ function ChannelHeader() {
   };
 
   return (
-    <div className="mb-3 ps-4 pe-2 d-flex justify-content-between">
-      <span>{t('title')}</span>
+    <div className="mb-3 p-3 pt-1 d-flex justify-content-between align-items-center border-bottom">
+      <span><b>{t('title')}</b></span>
       <Button
         variant="outline-primary"
         className="p-0 m-0 border-0"

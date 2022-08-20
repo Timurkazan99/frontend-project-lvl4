@@ -33,7 +33,7 @@ function MessageInput() {
   });
 
   return (
-    <div className="w-100 mt-auto px-1">
+    <div className="w-100 mt-auto p-1">
       <Form
         className="p-1 border border-primary rounded-pill"
         noValidate

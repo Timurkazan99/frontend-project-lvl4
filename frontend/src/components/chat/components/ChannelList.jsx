@@ -11,7 +11,6 @@ function ChannelList() {
   return (
     <ListGroup
       className="nav flex-column nav-pills nav-fill px-2"
-      style={{ zIndex: 200 }}
     >
       {Object.values(channels.entities).map((c) => {
         const item = () => (

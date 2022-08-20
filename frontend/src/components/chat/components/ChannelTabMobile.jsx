@@ -23,7 +23,7 @@ function ChannelTabMobile() {
     <div className="d-flex flex-column h-100">
       <ChannelHeader />
       <ChannelList />
-      <div className="mt-auto">
+      <div className="mt-auto px-2">
         <Button variant="danger" className="w-100" onClick={logout}>{t('logOut')}</Button>
       </div>
     </div>
