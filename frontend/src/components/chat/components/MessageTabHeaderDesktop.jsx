@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageTabHeaderContent from "./MessageTabHeaderContent";
+import MessageTabHeaderContent from "./MessageTabHeaderContent.jsx";
 
 const MessageTabHeaderDesktop = () => {
   return (

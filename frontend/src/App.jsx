@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import AppRouter from './components/AppRouter.jsx';
 import Navbar from './components/NavBar.jsx';
 import { Context } from './components/ContextProvider.jsx';
-import 'react-toastify/dist/ReactToastify.css';
+import './styles/main.css';
 import useCheckMobileScreen from './hooks/useCheckMobileScreen';
 
 function App() {

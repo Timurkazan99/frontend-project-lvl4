@@ -21,7 +21,7 @@ function MessageTabHeaderMobile() {
         style={{ height: '35px', width: '35px', marginRight: '16px' }}
         onClick={() => dispatch(toList())}
       >
-        <img src="assets/back.svg" alt="back" className="p-0" height="25px" width="25px" />
+        <img src="assets/img/back.svg" alt="back" className="p-0" height="25px" width="25px" />
         <span className="visually-hidden">{t('list')}</span>
       </Button>
       <div className="flex-grow-1">

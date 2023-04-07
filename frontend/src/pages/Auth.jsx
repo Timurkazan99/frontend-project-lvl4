@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
 import SigningForm from '../components/SigninForm.jsx';
 import SignupForm from '../components/SignupForm.jsx';
-import { Context } from "../components/ContextProvider";
+import { Context } from "../components/ContextProvider.jsx";
 
 function Auth() {
   const location = useLocation();
