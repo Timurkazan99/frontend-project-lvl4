@@ -20,7 +20,7 @@ const ru = {
       username: 'Имя пользователя',
       loginUsername: 'Ваш ник',
       password: 'Пароль',
-      confirmPassword: 'Подтвердите пароль',
+      passwordConfirmation: 'Подтвердите пароль',
 
       // Buttons
       logIn: 'Войти',

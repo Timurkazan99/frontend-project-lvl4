@@ -3,48 +3,45 @@ import { Card, Container } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
-import SigningForm from '../components/SigninForm.jsx';
-import SignupForm from '../components/SignupForm.jsx';
+import AuthForm from '../components/AuthForm.jsx';
 import { Context } from "../components/ContextProvider.jsx";
+import "../styles/auth.scss";
+
+const authMap = {
+  signin: {
+    title: 'authTitle',
+    span: 'notRegistered',
+    route: REGISTRATION_ROUTE,
+    link: 'registration'
+  },
+  signup: {
+    title: 'regTitle',
+    span: 'registered',
+    route: LOGIN_ROUTE,
+    link: 'authorization'
+  }
+}
 
 function Auth() {
   const location = useLocation();
   const { device } = useContext(Context);
-  const isSignup = () => location.pathname === REGISTRATION_ROUTE;
+  const mode = location.pathname === LOGIN_ROUTE ? 'signin' : 'signup';
+  const auth = authMap[mode];
   const { t } = useTranslation('translation', { keyPrefix: 'auth' });
-  const cardStyles = device.isMobile ? 'border-0' : "px-5 py-3";
-  const cardHeaderStyles = device.isMobile ? "text-center border-0" : "text-center";
-  const cardBodyStyles = device.isMobile ? "border-0" : "";
-  const cardFooterStyles = device.isMobile ? "text-center border-0" : "text-center pt-3";
 
   return (
     <Container
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: window.innerHeight - 54 }}
+      className={device.isMobile ? "mobile auth-container" : "auth-container"}
     >
-      <Card style={{ width: 600 }} className={ cardStyles }>
-        <Card.Header className={ cardHeaderStyles }><h2 className="m-auto">{isSignup() ? t('regTitle') : t('authTitle')}</h2></Card.Header>
-        <Card.Body className={ cardBodyStyles }>
-          { isSignup() ? <SignupForm /> : <SigningForm />}
+      <Card style={{ width: 600 }} className="auth-card">
+        <Card.Header className="auth-card-header"><h2 className="m-auto">{t(auth?.title)}</h2></Card.Header>
+        <Card.Body className="auth-card-body">
+          <AuthForm mode={mode} />
         </Card.Body>
-        <Card.Footer className={ cardFooterStyles }>
-          {
-            isSignup()
-              ? (
-                <>
-                  <span>{t('registered')}</span>
-                  {' '}
-                  <NavLink to={LOGIN_ROUTE}>{t('authorization')}</NavLink>
-                </>
-              )
-              : (
-                <>
-                  <span>{t('notRegistered')}</span>
-                  {' '}
-                  <NavLink to={REGISTRATION_ROUTE}>{t('registration')}</NavLink>
-                </>
-              )
-          }
+        <Card.Footer className="auth-card-footer">
+          <span>{t(auth?.span)}</span>
+          {' '}
+          <NavLink to={auth?.route}>{t(auth?.link)}</NavLink>
         </Card.Footer>
       </Card>
     </Container>

@@ -1,6 +1,7 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import thunkFetchData from '../thunks/fetchData';
 import { actions as channelActions } from './ChannelsSlice';
+import fetchDataReducer from '../../utils/fetchReducer';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState({ loading: null, error: null });
@@ -14,20 +15,11 @@ export const messagesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(thunkFetchData.pending, (state) => {
-        state.loading = 'loading';
-        state.error = null;
+      .addCase(thunkFetchData.pending, fetchDataReducer.pending)
+      .addCase(thunkFetchData.fulfilled, (state, {payload: {messages}}) => {
+        fetchDataReducer.fulfilled(state, messages, messagesAdapter)
       })
-      .addCase(thunkFetchData.fulfilled, (state, action) => {
-        const { messages } = action.payload;
-        messagesAdapter.setAll(state, messages);
-        state.loading = 'loaded';
-        state.error = null;
-      })
-      .addCase(thunkFetchData.rejected, (state, action) => {
-        state.loading = 'failed';
-        state.error = action.error;
-      })
+      .addCase(thunkFetchData.rejected, fetchDataReducer.rejected)
       .addCase(channelActions.removeChannel, (state, { payload: id }) => {
         const ids = Object.values(state.entities)
           .filter(({ channelId }) => channelId === id)

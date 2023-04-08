@@ -1,13 +1,15 @@
 import { $host } from './index';
 
-export const registration = async (username, password) => {
-  const { data } = await $host.post('/api/v1/signup', { username, password });
+const sendRequestTo = async (username, password, url) => {
+  const { data } = await $host.post(url, { username, password });
   localStorage.setItem('token', data.token);
   return data;
+}
+
+export const registration = async (username, password) => {
+  return await sendRequestTo(username, password, 'api/v1/signup');
 };
 
 export const login = async (username, password) => {
-  const { data } = await $host.post('/api/v1/login', { username, password });
-  localStorage.setItem('token', data.token);
-  return data;
+  return await sendRequestTo(username, password, 'api/v1/login');
 };

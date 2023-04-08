@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MessageTabMobile from './components/MessageTabMobile.jsx';
+import MessageTab from './components/MessageTab.jsx';
 import { toChat } from '../../store/reducers/UiSlice';
-import ChannelTabMobile from './components/ChannelTabMobile.jsx';
+import ChannelTab from './components/ChannelTab.jsx';
 
 function MobileChat() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function MobileChat() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChannel]);
 
-  return (activeTab === 'chat') ? <MessageTabMobile /> : <ChannelTabMobile />;
+  return (activeTab === 'chat') ? <MessageTab /> : <ChannelTab />;
 }
 
 export default MobileChat;

@@ -1,5 +1,6 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import thunkFetchData from '../thunks/fetchData';
+import fetchDataReducer from '../../utils/fetchReducer';
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
@@ -29,20 +30,11 @@ export const channelsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(thunkFetchData.pending, (state) => {
-        state.loading = 'loading';
-        state.error = null;
+      .addCase(thunkFetchData.pending, fetchDataReducer.pending)
+      .addCase(thunkFetchData.fulfilled, (state, {payload: {channels}}) => {
+        fetchDataReducer.fulfilled(state, channels, channelsAdapter);
       })
-      .addCase(thunkFetchData.fulfilled, (state, action) => {
-        const { channels } = action.payload;
-        channelsAdapter.setAll(state, channels);
-        state.loading = 'loaded';
-        state.error = null;
-      })
-      .addCase(thunkFetchData.rejected, (state, action) => {
-        state.loading = 'failed';
-        state.error = action.error;
-      });
+      .addCase(thunkFetchData.rejected, fetchDataReducer.rejected);
   },
 });
 /* eslint-enable no-param-reassign */
