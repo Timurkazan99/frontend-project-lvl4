@@ -20,7 +20,7 @@ function Chat() {
   const { networkError } = useToast();
   const rollbar = useRollbar();
   const classes = "h-100 overflow-hidden rounded";
-  const forMobile = device.isMobile ? "my-4 p-0" : "shadow border my-2";
+  const forMobile = device.isMobile ? "my-2 p-0" : "shadow border my-2";
 
     useEffect(() => {
     if (!user.isAuth) {

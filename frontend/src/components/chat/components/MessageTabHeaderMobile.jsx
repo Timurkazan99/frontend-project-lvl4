@@ -5,6 +5,8 @@ import { Button, Dropdown } from 'react-bootstrap';
 import ChannelControl from './ChannelControl.jsx';
 import MessageTabHeaderContent from './MessageTabHeaderContent.jsx';
 import { toList } from '../../../store/reducers/UiSlice';
+import Icon from "../../Icon.jsx";
+import "../../../styles/messageHeader.scss";
 
 function MessageTabHeaderMobile() {
   const dispatch = useDispatch();
@@ -13,15 +15,15 @@ function MessageTabHeaderMobile() {
 
   return (
     <div
-      className="bg-light mb-4 p-2 border-bottom small d-flex justify-content-between"
+      className="bg-light mobile message-header border-bottom small"
     >
       <Button
         variant="outline-primary"
         className="p-0 border-0 align-self-center"
-        style={{ height: '35px', width: '35px', marginRight: '16px' }}
+        style={{ height: '24px', width: '24px', marginRight: '16px' }}
         onClick={() => dispatch(toList())}
       >
-        <img src="assets/img/back.svg" alt="back" className="p-0" height="25px" width="25px" />
+        <Icon icon="back" style={{transform: "scale(1.3)"}}/>
         <span className="visually-hidden">{t('list')}</span>
       </Button>
       <div className="flex-grow-1">

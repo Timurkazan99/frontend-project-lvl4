@@ -1,1 +1,8 @@
 @import url("~react-toastify/dist/ReactToastify.css");
+
+.bi-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -.125em;
+}

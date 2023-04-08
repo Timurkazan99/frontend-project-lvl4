@@ -1,0 +1,15 @@
+.message-input-group {
+  --bs-border-opacity: 1;
+  border: 1px solid rgba(13, 110, 253, var(--bs-border-opacity));
+  border-radius: 20px;
+}
+
+.message-input {
+  border: 0!important;
+  border-radius: 20px 0 0 20px!important;
+}
+
+.message-btn {
+  border: 0!important;
+  border-radius: 0 20px 20px 0!important;
+}

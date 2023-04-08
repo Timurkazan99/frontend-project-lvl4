@@ -1,0 +1,47 @@
+@import "~bootstrap/scss/bootstrap";
+
+.auth-container {
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .align-items-center;
+
+  height: calc(100vh - 54px);
+}
+
+.auth-card {
+  @extend .px-5;
+  @extend .py-3;
+}
+
+.auth-card-header {
+  @extend .text-center;
+}
+
+.auth-card-body {
+
+}
+
+.auth-card-footer {
+  @extend .text-center;
+  @extend .pt-3;
+}
+
+.mobile {
+  .auth-card {
+    @extend .border-0
+  }
+
+  .auth-card-header {
+    @extend .text-center;
+    @extend .border-0;
+  }
+
+  .auth-card-body {
+    @extend .border-0;
+  }
+
+  .auth-card-footer {
+    @extend .text-center;
+    @extend .border-0;
+  }
+}
