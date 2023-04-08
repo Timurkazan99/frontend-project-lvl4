@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^7.0.0",
     "@hexlet/code": "file:..",
     "commander": "^9.3.0",
     "debug": "^4.3.4",
