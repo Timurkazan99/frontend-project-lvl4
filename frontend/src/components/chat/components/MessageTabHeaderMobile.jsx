@@ -28,13 +28,11 @@ function MessageTabHeaderMobile() {
         <MessageTabHeaderContent />
       </div>
       {
-        active.removable
-          ? (
+        active.removable && (
             <Dropdown>
               <ChannelControl id={active.id} name={active.name} active="none" />
             </Dropdown>
           )
-          : null
       }
     </div>
   );

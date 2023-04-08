@@ -6,27 +6,27 @@ import ChannelForm from './ChannelForm.jsx';
 import DeleteChannel from './DeleteChannel.jsx';
 import { onHide } from '../../store/reducers/UiSlice';
 
+const mapping = {
+  newChannel: {
+    title: 'createTitle',
+    Component: ChannelForm,
+  },
+  renameChannel: {
+    title: 'renameTitle',
+    Component: ChannelForm,
+  },
+  removeChannel: {
+    title: 'deleteTitle',
+    Component: DeleteChannel,
+  },
+};
+
 function ChannelModal() {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.show);
   const eventName = useSelector((state) => state.channels.selected.eventName);
   const close = () => dispatch(onHide());
   const { t } = useTranslation('translation', { keyPrefix: 'channelModal' });
-
-  const mapping = {
-    newChannel: {
-      title: t('createTitle'),
-      Component: ChannelForm,
-    },
-    renameChannel: {
-      title: t('renameTitle'),
-      Component: ChannelForm,
-    },
-    removeChannel: {
-      title: t('deleteTitle'),
-      Component: DeleteChannel,
-    },
-  };
 
   const { title, Component } = mapping?.[eventName] || null;
 
@@ -38,7 +38,7 @@ function ChannelModal() {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {title}
+          {t(title)}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

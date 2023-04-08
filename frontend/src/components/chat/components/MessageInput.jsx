@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import filter from 'leo-profanity';
-import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import useStatusCheck from '../../../hooks/useStatusCheck';
@@ -15,47 +14,36 @@ function MessageInput() {
   const messageRef = useRef(null);
   const { t } = useTranslation('translation', { keyPrefix: 'messages' });
   const responseStatusCheck = useStatusCheck();
-
-  const click = ({ message }, actions) => {
-    socket.emit('newMessage', { body: filter.clean(message), channelId: active, username: user.name }, responseStatusCheck);
-    actions.resetForm({ message: '' });
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      message: '',
-    },
-    onSubmit: click,
-  });
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     messageRef.current.focus();
-  });
+  }, []);
 
   return (
     <div className="w-100 mt-auto p-1">
       <Form
         className="p-1 border border-primary rounded-pill"
         noValidate
-        onSubmit={formik.handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault();
+          socket.emit('newMessage', { body: filter.clean(message), channelId: active, username: user.name }, responseStatusCheck);
+          setMessage('');
+        }}
       >
-        <InputGroup
-          className="py-1"
-        >
+        <InputGroup className="py-1">
           <Form.Control
             ref={messageRef}
             className="border-0 rounded-pill form-control"
             aria-label={t('label')}
-            name="message"
-            type="message"
             placeholder={t('placeholder')}
-            value={formik.values.message}
-            onChange={formik.handleChange}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           />
           <Button
             type="submit"
             className="border-0"
-            disabled={formik.values.message === '' || formik.isSubmitting}
+            disabled={message === ''}
             variant="outline-primary"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
