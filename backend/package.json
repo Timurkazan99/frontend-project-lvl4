@@ -8,7 +8,7 @@
     "start-server": "./bin/index.js"
   },
   "scripts": {
-    "start": "start-server -p 5001 -s ../frontend/build"
+    "start": "start-server -s ../frontend/build"
   },
   "author": "",
   "license": "ISC",
