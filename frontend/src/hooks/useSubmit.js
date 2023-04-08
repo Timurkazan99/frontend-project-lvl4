@@ -7,7 +7,7 @@ import {useRollbar} from "@rollbar/react";
 import useToast from "./useToast";
 
 const useSubmit = (formProps) => {
-    const user = useContext(Context);
+    const {user} = useContext(Context);
     const navigate = useNavigate();
     const rollbar = useRollbar();
     const { networkError } = useToast();

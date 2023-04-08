@@ -12,9 +12,9 @@ function MessageTab() {
     <div className="d-flex flex-column h-100">
       {
         device.isMobile ?
-          <MessageTabHeaderDesktop />
-          :
           <MessageTabHeaderMobile />
+          :
+          <MessageTabHeaderDesktop />
       }
       <MessageBox />
       <MessageInput />

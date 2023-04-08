@@ -4,7 +4,7 @@ import {Context} from "../components/ContextProvider.jsx";
 import {useNavigate} from "react-router-dom";
 
 const useLogout = () => {
-    const user = useContext(Context);
+    const {user} = useContext(Context);
     const navigate = useNavigate();
 
     return () => {
