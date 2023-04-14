@@ -137,4 +137,19 @@ export default (app, defaultState = {}) => {
     .get('/', (_req, reply) => {
       reply.sendFile('index.html');
     });
+
+  app
+      .get('/login', (_req, reply) => {
+        reply.sendFile('index.html');
+      });
+
+  app
+      .get('/signup', (_req, reply) => {
+        reply.sendFile('index.html');
+      });
+
+  app
+      .get('/404', (_req, reply) => {
+        reply.sendFile('index.html');
+      });
 };
