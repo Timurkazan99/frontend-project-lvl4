@@ -1,22 +1,20 @@
-const path = require('path')
-const fs = require('fs')
+const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 require('dotenv').config({ path: './.env' });
 
 // Main const
 const PATHS = {
   src: path.join(__dirname, '../src'),
   dist: path.join(__dirname, '../build'),
-  assets: 'assets/'
-}
-
+  assets: 'assets/',
+};
 
 module.exports = {
   externals: {
-    paths: PATHS
+    paths: PATHS,
   },
   entry: ['@babel/polyfill', `${PATHS.src}/index.jsx`],
   output: {
@@ -26,7 +24,7 @@ module.exports = {
       publicPath: '/' - relative path for dist folder (js,css etc)
       publicPath: './' (dot before /) - absolute path for dist folder (js,css etc)
     */
-    publicPath: '/'
+    publicPath: '/',
   },
   optimization: {
     splitChunks: {
@@ -35,10 +33,10 @@ module.exports = {
           name: 'vendors',
           test: /node_modules/,
           chunks: 'all',
-          enforce: true
-        }
-      }
-    }
+          enforce: true,
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -46,7 +44,7 @@ module.exports = {
         // JavaScript
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: '/node_modules|static/'
+        exclude: '/node_modules|static/',
       },
       {
         test: /\.jsx$/,
@@ -87,30 +85,30 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: true }
+            options: { sourceMap: true },
           },
           {
             loader: 'sass-loader',
-            options: { sourceMap: true }
-          }
-        ]
+            options: { sourceMap: true },
+          },
+        ],
       },
       {
         // css
         test: /\.(css|less)$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
-            loader: 'postcss-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'postcss-loader',
+          },
+        ],
+      },
+    ],
   },
   resolve: {
     alias: {
@@ -123,14 +121,14 @@ module.exports = {
       'process.env': JSON.stringify(process.env),
     }),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[contenthash].css`
+      filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin({
       patterns: [
         // Images:
         {
           from: `${PATHS.src}/${PATHS.assets}img`,
-          to: `${PATHS.assets}img`
+          to: `${PATHS.assets}img`,
         },
         // Fonts:
         // {
@@ -140,10 +138,10 @@ module.exports = {
         // // Static (copy to '/'):
         {
           from: `${PATHS.src}/static`,
-          to: ''
-        }
-      ]
+          to: '',
+        },
+      ],
     }),
-    new HtmlWebpackPlugin({ template: `./public/index.html`}),
-  ]
-}
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
+  ],
+};

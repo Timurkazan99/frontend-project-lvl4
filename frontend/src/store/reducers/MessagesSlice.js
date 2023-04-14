@@ -1,7 +1,6 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import thunkFetchData from '../thunks/fetchData';
 import { actions as channelActions } from './ChannelsSlice';
-import fetchDataReducer from '../../utils/fetchReducer';
+import modifyBuilder from '../../utils/modifyBuilder';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState({ loading: null, error: null });
@@ -14,12 +13,7 @@ export const messagesSlice = createSlice({
     addMessage: messagesAdapter.addOne,
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(thunkFetchData.pending, fetchDataReducer.pending)
-      .addCase(thunkFetchData.fulfilled, (state, {payload: {messages}}) => {
-        fetchDataReducer.fulfilled(state, messages, messagesAdapter)
-      })
-      .addCase(thunkFetchData.rejected, fetchDataReducer.rejected)
+    modifyBuilder(builder, messagesAdapter, 'messages')
       .addCase(channelActions.removeChannel, (state, { payload: id }) => {
         const ids = Object.values(state.entities)
           .filter(({ channelId }) => channelId === id)

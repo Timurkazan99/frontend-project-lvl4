@@ -6,7 +6,7 @@
     "build": "npm run build --prefix frontend & npm link --prefix backend",
     "start": "cd backend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-prebuild": "npm i --prefix frontend & npm i --prefix backend"
+    "prebuild": "npm i --prefix frontend & npm i --prefix backend"
   },
   "workspaces": [
     "backend",

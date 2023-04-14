@@ -1,11 +1,11 @@
 /* Development config:
   ========================================================================== */
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 // Source: https://github.com/survivejs/webpack-merge
-const { merge } = require('webpack-merge')
+const { merge } = require('webpack-merge');
 // Base config
-const baseWebpackConfig = require('./webpack.base.conf')
+const baseWebpackConfig = require('./webpack.base.conf');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -19,17 +19,19 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     client: {
       overlay: {
         warnings: true,
-        errors: true
-      }
-    }
+        errors: true,
+      },
+    },
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
-      filename: '[file].map'
-    })
-  ]
-})
+      filename: '[file].map',
+    }),
+  ],
+});
 
+/* eslint-disable no-unused-vars */
 module.exports = new Promise((resolve, reject) => {
-  resolve(devWebpackConfig)
-})
+  resolve(devWebpackConfig);
+});
+/* eslint-enable no-unused-vars */
