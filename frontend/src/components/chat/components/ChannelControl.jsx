@@ -22,7 +22,7 @@ function ChannelControl({ id, active, name }) {
         id="dropdown-split-basic"
         aria-label={t('control')}
       >
-        <span className="visually-hidden">{t('control')}</span>
+        <span className="visually-hidden">{t('control')} {name}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item onClick={() => changeChannel('removeChannel')}>{t('remove')}</Dropdown.Item>

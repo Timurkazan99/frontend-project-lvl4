@@ -3,6 +3,7 @@ import {FloatingLabel, Form} from "react-bootstrap";
 
 const Field = ({field, formik, t}) => {
     const type = field.includes("password") ? 'password' : 'text';
+    console.log(formik.errors);
     return (
         <FloatingLabel
             controlId={field}

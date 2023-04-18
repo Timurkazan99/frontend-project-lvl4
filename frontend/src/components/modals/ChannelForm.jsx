@@ -34,7 +34,11 @@ function ChannelForm({ onHide }) {
 
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, []);
+
+  useEffect(() => {
+    console.log(formik.errors.channelName);
+  }, [formik.errors]);
 
   return (
     <Form
@@ -50,7 +54,9 @@ function ChannelForm({ onHide }) {
           value={formik.values.channelName}
           ref={inputRef}
           onChange={formik.handleChange}
+          isInvalid={formik.touched.channelName && formik.errors.channelName}
         />
+        <Form.Control.Feedback type="invalid">{t(formik.errors.channelName)}</Form.Control.Feedback>
         <div className="d-flex justify-content-end">
           <Button
             type="button"

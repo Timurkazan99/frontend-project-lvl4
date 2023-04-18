@@ -43,6 +43,7 @@ const ru = {
       list: 'Список каналов',
       rename: 'Переименовать',
       remove: 'Удалить',
+      add: 'Создать канал',
     },
     channelModal: {
       // Errors

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
@@ -43,10 +43,14 @@ function AuthForm({mode}) {
   const click = useSubmit(formProps);
 
   const formik = useFormik({
-    validationSchema: SignupSchema,
+    validationSchema: formProps.schema,
     initialValues: formProps?.initialValues,
     onSubmit: click,
   });
+
+  useEffect(() => {
+    console.log(formik.errors);
+  }, [formik.errors])
 
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>

@@ -19,13 +19,14 @@ function ChannelHeader() {
     <div className="mb-3 p-3 pt-1 d-flex justify-content-between align-items-center border-bottom">
       <span><b>{t('title')}</b></span>
       <Button
+        id="addChanel"
         variant="outline-primary"
         className="p-0 m-0 border-0"
         onClick={createChannel}
         style={{ lineHeight: '0px', height: '24px', width: '24px' }}
       >
         <Icon icon="add" style={{transform: "scale(1.3)"}}/>
-        <span className="visually-hidden">+</span>
+        <span className="visually-hidden">{t('add')}</span>
       </Button>
     </div>
   );

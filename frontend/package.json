@@ -62,8 +62,8 @@
   "scripts": {
     "build": "webpack --config ./webpack/webpack.prod.conf.js",
     "dev": "webpack-dev-server --open --config ./webpack/webpack.dev.conf.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "npx jest --bail",
+    "linter": "npx eslint ."
   },
   "eslintConfig": {
     "extends": [
