@@ -1,0 +1,31 @@
+name: test
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v2
+          with:
+            node-version: ${{ matrix.node-version }}
+      - name: Install project
+          run: npm i
+      - name: Build project
+          run: npm run build
+      - name: Run code
+          run: npm start
+      - name: Run test
+          run: npm run test
