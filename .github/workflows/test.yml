@@ -7,6 +7,9 @@ on:
     tags:
       - '**'
 
+env:
+  REACT_APP_HOST: http://localhost:5000
+
 jobs:
   linter:
     runs-on: ubuntu-latest
@@ -25,7 +28,5 @@ jobs:
         run: npm i
       - name: Build project
         run: npm run build
-      - name: Run code
-        run: npm start
       - name: Run test
         run: npm run test

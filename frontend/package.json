@@ -67,6 +67,12 @@
     "test": "npx jest --bail",
     "linter": "npx eslint ."
   },
+  "jest-puppeteer": {
+    "server": {
+      "command": "start-server",
+      "port": 5000
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
