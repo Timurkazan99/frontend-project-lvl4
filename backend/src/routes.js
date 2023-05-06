@@ -39,6 +39,7 @@ const buildState = (defaultState) => {
 };
 
 export default (app, defaultState = {}) => {
+  const uri = app.config.URI || '';
   const state = buildState(defaultState);
 
   app.io.on('connect', (socket) => {
@@ -87,7 +88,7 @@ export default (app, defaultState = {}) => {
     });
   });
 
-  app.post('/api/v1/login', async (req, reply) => {
+  app.post(`${uri}/api/v1/login`, async (req, reply) => {
     const username = _.get(req, 'body.username');
     const password = _.get(req, 'body.password');
     const user = state.users.find((u) => u.username === username);
@@ -101,7 +102,7 @@ export default (app, defaultState = {}) => {
     reply.send({ token, username });
   });
 
-  app.post('/api/v1/signup', async (req, reply) => {
+  app.post(`${uri}/api/v1/signup`, async (req, reply) => {
     const username = _.get(req, 'body.username');
     const password = _.get(req, 'body.password');
     const user = state.users.find((u) => u.username === username);
@@ -120,7 +121,7 @@ export default (app, defaultState = {}) => {
       .send({ token, username });
   });
 
-  app.get('/api/v1/data', { preValidation: [app.authenticate] }, (req, reply) => {
+  app.get(`${uri}/api/v1/data`, { preValidation: [app.authenticate] }, (req, reply) => {
     const user = state.users.find(({ id }) => id === req.user.userId);
 
     if (!user) {
@@ -134,22 +135,22 @@ export default (app, defaultState = {}) => {
   });
 
   app
-    .get('/', (_req, reply) => {
+    .get(`${uri}/`, (_req, reply) => {
       reply.sendFile('index.html');
     });
 
   app
-      .get('/login', (_req, reply) => {
+      .get(`${uri}/login`, (_req, reply) => {
         reply.sendFile('index.html');
       });
 
   app
-      .get('/signup', (_req, reply) => {
+      .get(`${uri}/signup`, (_req, reply) => {
         reply.sendFile('index.html');
       });
 
   app
-      .get('/404', (_req, reply) => {
+      .get(`${uri}/404`, (_req, reply) => {
         reply.sendFile('index.html');
       });
 };

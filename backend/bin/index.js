@@ -4,7 +4,9 @@ import path from 'path';
 import Fastify from 'fastify';
 import { program } from 'commander';
 import plugin from '../src/plugin.js';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 const port = process.env.PORT || 5000;
 const staticPath = path.join(process.cwd(), 'build');
 
