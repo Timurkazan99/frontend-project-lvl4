@@ -1,12 +1,11 @@
 import axios from 'axios';
+import { URI } from '../utils/const';
 
-const $host = axios.create({
-  baseURL: process.env.REACT_APP_HOST,
-});
+const host = process.env.REACT_APP_HOST;
+const baseURL = `${host}${URI}`;
 
-const $authHost = axios.create({
-  baseURL: process.env.REACT_APP_HOST,
-});
+const $host = axios.create({ baseURL });
+const $authHost = axios.create({ baseURL });
 
 const authInterceptor = (config) => {
   config.headers.authorization = `Bearer ${localStorage.getItem('token')}`; // eslint-disable-line no-param-reassign
