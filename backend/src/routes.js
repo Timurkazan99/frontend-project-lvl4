@@ -39,7 +39,7 @@ const buildState = (defaultState) => {
 };
 
 export default (app, defaultState = {}) => {
-  const uri = app.config.URI || '';
+  const uri = app.config.URI;
   const state = buildState(defaultState);
 
   app.io.on('connect', (socket) => {

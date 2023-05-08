@@ -9,6 +9,7 @@ function SocketProvider({ children }) {
   const host = process.env.REACT_APP_HOST || 'http://localhost:5001';
   const socket = io(`${host}${URI}`, {
     transports: ['websocket'],
+    path: `${URI}/socket/`
   });
 
   const update = useSocket(socket);

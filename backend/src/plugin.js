@@ -24,21 +24,22 @@ const schema = {
 
 const { Unauthorized } = HttpErrors;
 
-const setUpEnv = (app) => {
-  app.register(fastifyEnv, {
+const setUpEnv = async (app) => {
+  await app.register(fastifyEnv, {
+    dotenv: true,
     schema
   });
 }
 
-const setUpStaticAssets = (app, buildPath) => {
-  app.register(fastifyStatic, {
+const setUpStaticAssets = async (app, buildPath) => {
+  await app.register(fastifyStatic, {
     root: buildPath,
   });
 };
 
-const setUpAuth = (app) => {
+const setUpAuth = async (app) => {
   // TODO add socket auth
-  app
+  await app
     .register(fastifyJWT, {
       secret: 'supersecret',
     })
@@ -52,10 +53,13 @@ const setUpAuth = (app) => {
 };
 
 export default async (app, options) => {
-  setUpEnv(app);
-  setUpAuth(app);
-  setUpStaticAssets(app, options.staticPath);
-  await app.register(fastifySocketIo);
+  await setUpEnv(app);
+  await setUpAuth(app);
+  await setUpStaticAssets(app, options.staticPath);
+  const uri = app.config.URI;
+  await app.register(fastifySocketIo, {
+    path: `${uri}/socket/`
+  });
   await app.register(fastifyCors, {
     origin: "*",
     methods: ["POST", "GET", "OPTIONS"]

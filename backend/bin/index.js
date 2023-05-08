@@ -28,6 +28,7 @@ const start = async () => {
   try {
     const appOptions = {
       staticPath: path.resolve(process.cwd(), options.static),
+      dotenv: true
     };
     const preparedServer = await plugin(fastify, appOptions);
     await preparedServer.listen(options.port, options.address);
