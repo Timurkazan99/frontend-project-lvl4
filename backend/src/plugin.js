@@ -1,7 +1,6 @@
 // @ts-check
 
 import fastifySocketIo from 'fastify-socket.io';
-import fastifyStatic from 'fastify-static';
 import fastifyJWT from 'fastify-jwt';
 import fastifyCors from '@fastify/cors';
 import fastifyEnv from '@fastify/env';
@@ -31,12 +30,6 @@ const setUpEnv = async (app) => {
   });
 }
 
-const setUpStaticAssets = async (app, buildPath) => {
-  await app.register(fastifyStatic, {
-    root: buildPath,
-  });
-};
-
 const setUpAuth = async (app) => {
   // TODO add socket auth
   await app
@@ -55,7 +48,6 @@ const setUpAuth = async (app) => {
 export default async (app, options) => {
   await setUpEnv(app);
   await setUpAuth(app);
-  await setUpStaticAssets(app, options.staticPath);
   const uri = app.config.URI;
   await app.register(fastifySocketIo, {
     path: `${uri}/socket/`

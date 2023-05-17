@@ -8,14 +8,12 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 const port = process.env.PORT || 5000;
-const staticPath = path.join(process.cwd(), 'build');
 
 program
   .version('1.1.3', '-v, --version')
   .usage('[OPTIONS]')
   .option('-a, --address <address>', 'address to listen on', '0.0.0.0')
   .option('-p, --port <port>', 'port to listen on', port)
-  .option('-s, --static <path>', 'path to static assets files', staticPath)
   .parse(process.argv);
 
 const options = program.opts();
@@ -27,7 +25,6 @@ const fastify = Fastify({
 const start = async () => {
   try {
     const appOptions = {
-      staticPath: path.resolve(process.cwd(), options.static),
       dotenv: true
     };
     const preparedServer = await plugin(fastify, appOptions);

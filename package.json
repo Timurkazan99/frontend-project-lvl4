@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "npm run build --prefix frontend",
-    "start": "start-server -s frontend/build",
+    "start": "npm start --prefix backend",
     "test": "npm run test --prefix frontend",
     "linter": "npm run linter --prefix frontend"
   },
