@@ -13,7 +13,7 @@ describe('Chat', () => {
 
   it('Has elements Chat', async () => {
     await expect(page).toMatchElement('span', { text: 'Каналы', timeout: 2000 });
-    await expect(page).toMatchElement('button', { text: 'Создать канал', timeout: 2000});
+    await expect(page).toMatchElement('button', { text: 'Создать канал', timeout: 2000 });
     await expect(page).toMatchElement('b', { text: '#general', timeout: 2000 });
     await expect(page).toMatchElement('span', { text: /\d+ сообщени./, timeout: 2000 });
     await expect(page).toMatchElement('input', { text: '', timeout: 2000 });
