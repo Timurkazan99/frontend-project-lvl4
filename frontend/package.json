@@ -76,7 +76,7 @@
       {
         "command": "npm run dev",
         "port": 8081,
-        "timeout": 120000,
+        "launchTimeout": 120000,
         "waitOnScheme": {
           "delay": 60000
         }
