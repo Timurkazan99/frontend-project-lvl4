@@ -11,7 +11,7 @@ env:
   REACT_APP_HOST: http://localhost:5000
 
 jobs:
-  linter:
+  tests:
     runs-on: ubuntu-latest
 
     strategy:

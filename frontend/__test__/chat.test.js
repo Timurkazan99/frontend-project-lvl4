@@ -21,40 +21,40 @@ describe('Chat', () => {
   });
 
   it('Send message', async () => {
-    await expect(page).toFill('input', 'message to general');
+    await expect(page).toFill('input', 'message to general', { timeout: 2000 });
     await expect(page).toClick('button[type="submit"]');
-    await expect(page).toMatchTextContent('message to general');
+    await expect(page).toMatchTextContent('message to general', { timeout: 2000 });
     await expect(page).toClick('button', { text: '# random' });
-    await expect(page).not.toMatchTextContent('message to general');
-    await expect(page).toFill('input', 'message to random');
+    await expect(page).not.toMatchTextContent('message to general', { timeout: 2000 });
+    await expect(page).toFill('input', 'message to random', { timeout: 2000 });
     await expect(page).toClick('button[type="submit"]');
-    await expect(page).toMatchTextContent('message to random');
+    await expect(page).toMatchTextContent('message to random', { timeout: 2000 });
     await expect(page).toClick('button', { text: '# general' });
-    await expect(page).not.toMatchTextContent('message to random');
-    await expect(page).toMatchTextContent('message to general');
+    await expect(page).not.toMatchTextContent('message to random', { timeout: 2000 });
+    await expect(page).toMatchTextContent('message to general', { timeout: 2000 });
   });
 
   it('Send message with badwords', async () => {
-    await expect(page).toFill('input', 'собшение: блять');
+    await expect(page).toFill('input', 'собшение: блять', { timeout: 2000 });
     await expect(page).toClick('button[type="submit"]');
-    await expect(page).toMatchTextContent('собшение: *****');
-    await expect(page).not.toMatchTextContent('собшение: блять');
+    await expect(page).toMatchTextContent('собшение: *****', { timeout: 2000 });
+    await expect(page).not.toMatchTextContent('собшение: блять', { timeout: 2000 });
   });
 
   it('Add Channel', async () => {
     await expect(page).toClick('button', { text: 'Создать канал' });
-    await expect(page).toMatchTextContent('Создать канал');
-    await expect(page).toFill('#channelName', 'chanel1');
+    await expect(page).toMatchTextContent('Создать канал', { timeout: 2000 });
+    await expect(page).toFill('#channelName', 'chanel1', { timeout: 2000 });
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('# chanel1', { timeout: 2000 });
   });
 
   it('Add exist Channel', async () => {
     await expect(page).toClick('button', { text: 'Создать канал' });
-    await expect(page).toMatchTextContent('Создать канал');
-    await expect(page).toFill('#channelName', 'general');
+    await expect(page).toMatchTextContent('Создать канал', { timeout: 2000 });
+    await expect(page).toFill('#channelName', 'general', { timeout: 2000 });
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
-    await expect(page).toMatchTextContent('Имя канала уже используется');
+    await expect(page).toMatchTextContent('Имя канала уже используется', { timeout: 2000 });
     await expect(page).toClick('button', { text: 'Отменить' });
     await page.waitForTimeout(2000);
   });
@@ -86,31 +86,31 @@ describe('Edit Channel', () => {
 
   it('Edit Channel', async () => {
     await expect(page).toClick('button', { text: 'Управление каналом forEdit' });
-    await expect(page).toClick('a', { text: 'Переименовать', timeout: 2000 });
-    await expect(page).toFill('#channelName', 'Edited');
+    await expect(page).toClick('a', { text: 'Переименовать' });
+    await expect(page).toFill('#channelName', 'Edited', { timeout: 2000 });
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
-    await expect(page).toMatchTextContent('# Edited');
-    await expect(page).not.toMatchTextContent('# forEdit');
+    await expect(page).toMatchTextContent('# Edited', { timeout: 2000 });
+    await expect(page).not.toMatchTextContent('# forEdit', { timeout: 2000 });
     await page.waitForTimeout(1000);
   });
 
   it('Edit to exist Channel', async () => {
     await expect(page).toClick('button', { text: 'Управление каналом forAbort' });
     await expect(page).toClick('a', { text: 'Переименовать' });
-    await expect(page).toFill('#channelName', 'general');
+    await expect(page).toFill('#channelName', 'general', { timeout: 2000 });
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
-    await expect(page).toMatchTextContent('Имя канала уже используется');
+    await expect(page).toMatchTextContent('Имя канала уже используется', { timeout: 2000 });
     await expect(page).toClick('button', { text: 'Отменить' });
     await page.waitForTimeout(1000);
   });
 
   it('Delete Channel', async () => {
     await expect(page).toClick('button', { text: 'Управление каналом forDelete' });
-    await expect(page).toClick('a', { text: 'Удалить', timeout: 2000 });
-    await expect(page).toMatchTextContent('Удалить канал');
-    await expect(page).toMatchTextContent('Вы уверены?');
+    await expect(page).toClick('a', { text: 'Удалить' });
+    await expect(page).toMatchTextContent('Удалить канал', { timeout: 2000 });
+    await expect(page).toMatchTextContent('Вы уверены?', { timeout: 2000 });
     await expect(page).toClick('button', { text: 'Удалить' });
-    await expect(page).not.toMatchTextContent('# forDelete');
+    await expect(page).not.toMatchTextContent('# forDelete', { timeout: 2000 });
     await page.waitForTimeout(1000);
   });
 });

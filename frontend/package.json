@@ -68,6 +68,9 @@
     "linter": "npx eslint ."
   },
   "jest-puppeteer": {
+    "launch": {
+      "headless": true
+    },
     "server": [
       {
         "command": "start-server",
