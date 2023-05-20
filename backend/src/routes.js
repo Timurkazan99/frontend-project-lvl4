@@ -133,24 +133,4 @@ export default (app, defaultState = {}) => {
       .header('Content-Type', 'application/json; charset=utf-8')
       .send(_.omit(state, 'users'));
   });
-
-  app
-    .get(`${uri}/`, (_req, reply) => {
-      reply.sendFile('index.html');
-    });
-
-  app
-      .get(`${uri}/login`, (_req, reply) => {
-        reply.sendFile('index.html');
-      });
-
-  app
-      .get(`${uri}/signup`, (_req, reply) => {
-        reply.sendFile('index.html');
-      });
-
-  app
-      .get(`${uri}/404`, (_req, reply) => {
-        reply.sendFile('index.html');
-      });
 };
