@@ -3,7 +3,7 @@ jest.setTimeout(50000);
 
 describe('Chat', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:5000');
+    await page.goto('http://localhost:8081');
     await page.waitForSelector('#username');
     await page.type('#username', 'admin');
     await page.waitForSelector('#password');
@@ -12,12 +12,12 @@ describe('Chat', () => {
   });
 
   it('Has elements Chat', async () => {
-    await expect(page).toMatchElement('span', { text: 'Каналы' });
-    await expect(page).toMatchElement('button', { text: 'Создать канал' });
-    await expect(page).toMatchElement('b', { text: '#general' });
-    await expect(page).toMatchElement('span', { text: /\d+ сообщени./ });
-    await expect(page).toMatchElement('input', { text: '' });
-    await expect(page).toMatchElement('button', { text: 'Отправить' });
+    await expect(page).toMatchElement('span', { text: 'Каналы', timeout: 2000 });
+    await expect(page).toMatchElement('button', { text: 'Создать канал', timeout: 2000});
+    await expect(page).toMatchElement('b', { text: '#general', timeout: 2000 });
+    await expect(page).toMatchElement('span', { text: /\d+ сообщени./, timeout: 2000 });
+    await expect(page).toMatchElement('input', { text: '', timeout: 2000 });
+    await expect(page).toMatchElement('button', { text: 'Отправить', timeout: 2000 });
   });
 
   it('Send message', async () => {
@@ -86,7 +86,7 @@ describe('Edit Channel', () => {
 
   it('Edit Channel', async () => {
     await expect(page).toClick('button', { text: 'Управление каналом forEdit' });
-    await expect(page).toClick('a', { text: 'Переименовать' });
+    await expect(page).toClick('a', { text: 'Переименовать', timeout: 2000 });
     await expect(page).toFill('#channelName', 'Edited');
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('# Edited');
@@ -106,7 +106,7 @@ describe('Edit Channel', () => {
 
   it('Delete Channel', async () => {
     await expect(page).toClick('button', { text: 'Управление каналом forDelete' });
-    await expect(page).toClick('a', { text: 'Удалить' });
+    await expect(page).toClick('a', { text: 'Удалить', timeout: 2000 });
     await expect(page).toMatchTextContent('Удалить канал');
     await expect(page).toMatchTextContent('Вы уверены?');
     await expect(page).toClick('button', { text: 'Удалить' });

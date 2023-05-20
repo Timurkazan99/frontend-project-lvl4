@@ -68,10 +68,23 @@
     "linter": "npx eslint ."
   },
   "jest-puppeteer": {
-    "server": {
-      "command": "start-server",
-      "port": 5000
-    }
+    "launch": {
+      "headless": false
+    },
+    "server": [
+      {
+        "command": "start-server",
+        "port": 5000
+      },
+      {
+        "command": "npm run dev",
+        "port": 8081,
+        "timeout": 120000,
+        "waitOnScheme": {
+          "delay": 60000
+        }
+      }
+    ]
   },
   "eslintConfig": {
     "extends": [
