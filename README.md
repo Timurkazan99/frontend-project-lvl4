@@ -2,8 +2,8 @@
 [![Actions Status](https://github.com/Timurkazan99/frontend-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/Timurkazan99/frontend-project-lvl4/actions)
 [![eslint](https://github.com/Timurkazan99/frontend-project-lvl4/actions/workflows/eslint.yml/badge.svg)](https://github.com/Timurkazan99/frontend-project-lvl4/actions/workflows/eslint.yml)
 [![test](https://github.com/Timurkazan99/frontend-project-lvl4/actions/workflows/test.yml/badge.svg)](https://github.com/Timurkazan99/frontend-project-lvl4/actions/workflows/test.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/9000549e833a8be3eb4c/maintainability)](https://codeclimate.com/github/Timurkazan99/frontend-project-lvl2/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/9000549e833a8be3eb4c/test_coverage)](https://codeclimate.com/github/Timurkazan99/frontend-project-lvl2/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/154430771f9371c794f0/maintainability)](https://codeclimate.com/github/Timurkazan99/frontend-project-lvl4/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/154430771f9371c794f0/test_coverage)](https://codeclimate.com/github/Timurkazan99/frontend-project-lvl4/test_coverage)
 
 ### Описание:
 Упрощенный чат с возможностью общаться в реальном времени.
