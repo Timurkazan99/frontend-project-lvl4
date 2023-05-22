@@ -1,12 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import ChannelControl from './ChannelControl.jsx';
 import MessageTabHeaderContent from './MessageTabHeaderContent.jsx';
 import { toList } from '../../../store/reducers/UiSlice';
-import Icon from "../../Icon.jsx";
-import "../../../styles/messageHeader.scss";
+import IconBtn from "../../IconBtn.jsx";
 
 function MessageTabHeaderMobile() {
   const dispatch = useDispatch();
@@ -17,15 +16,12 @@ function MessageTabHeaderMobile() {
     <div
       className="bg-light mobile message-header border-bottom small"
     >
-      <Button
-        variant="outline-primary"
-        className="p-0 border-0 align-self-center"
-        style={{ height: '24px', width: '24px', marginRight: '16px' }}
-        onClick={() => dispatch(toList())}
-      >
-        <Icon icon="back" style={{transform: "scale(1.3)"}}/>
-        <span className="visually-hidden">{t('list')}</span>
-      </Button>
+      <IconBtn
+          className="back-btn"
+          onClick={() => dispatch(toList())}
+          icon="back"
+          text={t('list')}
+      />
       <div className="flex-grow-1">
         <MessageTabHeaderContent />
       </div>

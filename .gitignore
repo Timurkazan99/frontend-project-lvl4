@@ -5,6 +5,7 @@ frontend/src/__fixtures__
 frontend/node_modules
 backend/node_modules
 frontend/build
+frontend/coverage
 frontend/package-lock.json
 backend/package-lock.json
 package-lock.json

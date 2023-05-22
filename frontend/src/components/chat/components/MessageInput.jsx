@@ -1,13 +1,12 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Form, InputGroup } from 'react-bootstrap';
 import filter from 'leo-profanity';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import useStatusCheck from '../../../hooks/useStatusCheck';
 import { Context } from '../../ContextProvider.jsx';
 import { SocketContext } from '../../SocketProvider.jsx';
-import Icon from "../../Icon.jsx";
-import "../../../styles/messageInput.scss"
+import IconBtn from "../../IconBtn.jsx";
 
 function MessageInput() {
   const active = useSelector((state) => state.channels.active.id);
@@ -42,16 +41,13 @@ function MessageInput() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <Button
+          <IconBtn
             type="submit"
             className="message-btn"
             disabled={message === ''}
-            variant="outline-primary"
-            style={{ lineHeight: '0px'}}
-          >
-            <Icon icon="send" style={{transform: "scale(1.3)"}} />
-            <span className="visually-hidden">{t('addButton')}</span>
-          </Button>
+            icon="send"
+            text={t('addButton')}
+          />
         </InputGroup>
       </Form>
     </div>

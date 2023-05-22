@@ -11,6 +11,7 @@ import useToast from '../hooks/useToast';
 import DesktopChat from '../components/chat/DesktopChat.jsx';
 import ChannelModal from '../components/modals/ChannelModal.jsx';
 import MobileChat from '../components/chat/MobileChat.jsx';
+import '../styles/message.scss';
 
 function Chat() {
   const dispatch = useDispatch();

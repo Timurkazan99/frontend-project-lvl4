@@ -1,6 +1,26 @@
 /* eslint-disable no-undef */
 jest.setTimeout(50000);
 
+const loginMatch = async (user, text) => {
+  await expect(page).toFillForm('form', user, { timeout: 2000 });
+  await expect(page).toClick('button', { text: 'Войти' });
+  await expect(page).toMatchTextContent(text, { timeout: 2000 });
+};
+
+const fieldMatch = async (args) => {
+  await expect(page).toFill(args.selector, args.value, { timeout: 2000 });
+  if (args.valid) {
+    await expect(page).not.toMatchTextContent(args.text, { timeout: 2000 });
+  } else {
+    await expect(page).toMatchTextContent(args.text, { timeout: 2000 });
+  }
+};
+
+const clickMatch = async (button, text) => {
+  await expect(page).toClick('button', { text: button });
+  await expect(page).toMatchTextContent(text, { timeout: 2000 });
+};
+
 describe('Auth', () => {
   beforeAll(async () => {
     await jestPuppeteer.resetBrowser();
@@ -23,26 +43,15 @@ describe('Auth', () => {
   });
 
   it('Empty login', async () => {
-    await expect(page).toClick('button', { text: 'Войти' });
-    await expect(page).toMatchTextContent('Поле должно быть заполнено', { timeout: 2000 });
+    await clickMatch('Войти', 'Поле должно быть заполнено');
   });
 
   it('Wrong login', async () => {
-    await expect(page).toFillForm('form', {
-      username: 'James',
-      password: 'Bond',
-    }, { timeout: 2000 });
-    await expect(page).toClick('button', { text: 'Войти' });
-    await expect(page).toMatchTextContent('Неверные имя пользователя или пароль', { timeout: 2000 });
+    await loginMatch({ username: 'James', password: 'Bond' }, 'Неверные имя пользователя или пароль');
   });
 
   it('Success login', async () => {
-    await expect(page).toFillForm('form', {
-      username: 'admin',
-      password: 'admin',
-    }, { timeout: 2000 });
-    await expect(page).toClick('button', { text: 'Войти' });
-    await expect(page).toMatchTextContent('Ваш ник: admin', { timeout: 2000 });
+    await loginMatch({ username: 'admin', password: 'admin' }, 'Ваш ник: admin');
   });
 
   it('Lazy login', async () => {
@@ -51,8 +60,7 @@ describe('Auth', () => {
   });
 
   it('Success logout', async () => {
-    await expect(page).toClick('button', { text: 'Выйти' });
-    await expect(page).toMatchTextContent('Авторизация', { timeout: 2000 });
+    await clickMatch('Выйти', 'Авторизация');
   });
 });
 
@@ -72,46 +80,71 @@ describe('Registration', () => {
   });
 
   it('Empty Signup', async () => {
-    await expect(page).toClick('button', { text: 'Зарегистрироваться' });
-    await expect(page).toMatchTextContent('Поле должно быть заполнено', { timeout: 2000 });
+    await clickMatch('Зарегистрироваться', 'Поле должно быть заполнено');
   });
 
   it('Min username', async () => {
-    await expect(page).toFill('input#username', 'a', { timeout: 2000 });
-    await expect(page).toMatchTextContent('От 3 до 20 символов', { timeout: 2000 });
+    await fieldMatch({
+      selector: 'input#username',
+      value: 'a',
+      text: 'От 3 до 20 символов',
+      valid: false,
+    });
   });
 
   it('Max username', async () => {
-    await expect(page).toFill('input#username', 'abcdefghijklmnopqrstu', { timeout: 2000 });
-    await expect(page).toMatchTextContent('От 3 до 20 символов', { timeout: 2000 });
+    await fieldMatch({
+      selector: 'input#username',
+      value: 'abcdefghijklmnopqrstu',
+      text: 'От 3 до 20 символов',
+      valid: false,
+    });
   });
 
   it('Valid username', async () => {
-    await expect(page).toFill('input#username', 'abc', { timeout: 2000 });
-    await expect(page).not.toMatchTextContent('От 3 до 20 символов', { timeout: 2000 });
-
-    await expect(page).toFill('input#username', 'abcdefghijklmnopqrst', { timeout: 2000 });
-    await expect(page).not.toMatchTextContent('От 3 до 20 символов', { timeout: 2000 });
+    const common = {
+      selector: 'input#username',
+      text: 'От 3 до 20 символов',
+      valid: true,
+    };
+    await fieldMatch({ ...common, value: 'abc' });
+    await fieldMatch({ ...common, value: 'abcdefghijklmnopqrst' });
   });
 
   it('Min password', async () => {
-    await expect(page).toFill('input#password', 'abcde', { timeout: 2000 });
-    await expect(page).toMatchTextContent('Не менее 6 символов', { timeout: 2000 });
+    await fieldMatch({
+      selector: 'input#password',
+      value: 'abcde',
+      text: 'Не менее 6 символов',
+      valid: true,
+    });
   });
 
   it('Valid password', async () => {
-    await expect(page).toFill('input#password', 'abcdef', { timeout: 2000 });
-    await expect(page).not.toMatchTextContent('Не менее 6 символов', { timeout: 2000 });
+    await fieldMatch({
+      selector: 'input#password',
+      value: 'abcdef',
+      text: 'Не менее 6 символов',
+      valid: true,
+    });
   });
 
   it('Not valid password confirmation', async () => {
-    await expect(page).toFill('input#passwordConfirmation', 'abc', { timeout: 2000 });
-    await expect(page).toMatchTextContent('Пароли должны совпадать', { timeout: 2000 });
+    await fieldMatch({
+      selector: 'input#passwordConfirmation',
+      value: 'abc',
+      text: 'Пароли должны совпадать',
+      valid: false,
+    });
   });
 
   it('Valid password confirmation', async () => {
-    await expect(page).toFill('input#passwordConfirmation', 'abcdef', { timeout: 2000 });
-    await expect(page).not.toMatchTextContent('Пароли должны совпадать', { timeout: 2000 });
+    await fieldMatch({
+      selector: 'input#passwordConfirmation',
+      value: 'abcdef',
+      text: 'Пароли должны совпадать',
+      valid: true,
+    });
   });
 
   it('Success Signup', async () => {

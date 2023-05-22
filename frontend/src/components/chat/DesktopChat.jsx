@@ -5,11 +5,11 @@ import MessageTab from './components/MessageTab.jsx';
 
 function DesktopChat() {
   return (
-    <Row className="h-100 bg-white flex-md-row">
-      <Col md={2} className="col-4 col-md-2 border-end pt-2 px-0 bg-light h-100 overflow-auto">
+    <Row className="desktop-chat">
+      <Col md={2} className="channel-list">
         <ChannelTab />
       </Col>
-      <Col className="col p-0 h-100">
+      <Col className="message-tab">
         <MessageTab />
       </Col>
     </Row>

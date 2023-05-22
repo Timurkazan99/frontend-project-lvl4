@@ -1,0 +1,70 @@
+@import "~bootstrap/scss/bootstrap";
+
+.mobile.message-header {
+  margin-bottom: 1.5rem !important;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-header {
+  margin-bottom: 1.5rem !important;
+  padding: 5px 0.5rem 5px 0.5rem;
+}
+
+.message-input-group {
+  --bs-border-opacity: 1;
+  border: 1px solid rgba(13, 110, 253, var(--bs-border-opacity));
+  border-radius: 20px;
+}
+
+.message-input {
+  border: 0!important;
+  border-radius: 20px 0 0 20px!important;
+}
+
+.message-btn {
+  line-height: 0;
+  border: 0!important;
+  border-radius: 0 20px 20px 0!important;
+}
+
+.desktop-chat {
+  @extend .h-100;
+  @extend .bg-white;
+  @extend .flex-md-row;
+
+  .channel-list {
+    @extend .col-4;
+    @extend .col-md-2;
+    @extend .border-end;
+    @extend .pt-2;
+    @extend .px-0;
+    @extend .bg-light;
+    @extend .h-100;
+    @extend .overflow-auto;
+  }
+
+  .message-tab {
+    @extend .p-0;
+    @extend .h-100;
+  }
+}
+
+.back-btn {
+  @extend .p-0;
+  @extend .border-0;
+  @extend .align-self-center;
+  height: 24px;
+  width: 24px;
+  margin-right: 16px;
+}
+
+.add-btn {
+  @extend .p-0;
+  @extend .m-0;
+  @extend .border-0;
+  line-height: 0;
+  height: 24px;
+  width: 24px;
+}
