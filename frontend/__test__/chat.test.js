@@ -45,6 +45,7 @@ describe('Chat', () => {
     await expect(page).toClick('button', { text: 'Создать канал' });
     await expect(page).toMatchTextContent('Создать канал', { timeout: 2000 });
     await expect(page).toFill('#channelName', 'chanel1', { timeout: 2000 });
+    await page.waitForTimeout(2000);
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('# chanel1', { timeout: 2000 });
   });
@@ -53,6 +54,7 @@ describe('Chat', () => {
     await expect(page).toClick('button', { text: 'Создать канал' });
     await expect(page).toMatchTextContent('Создать канал', { timeout: 2000 });
     await expect(page).toFill('#channelName', 'general', { timeout: 2000 });
+    await page.waitForTimeout(2000);
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('Имя канала уже используется', { timeout: 2000 });
     await expect(page).toClick('button', { text: 'Отменить' });
@@ -88,6 +90,7 @@ describe('Edit Channel', () => {
     await expect(page).toClick('button', { text: 'Управление каналом forEdit' });
     await expect(page).toClick('a', { text: 'Переименовать' });
     await expect(page).toFill('#channelName', 'Edited', { timeout: 2000 });
+    await page.waitForTimeout(2000);
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('# Edited', { timeout: 2000 });
     await expect(page).not.toMatchTextContent('# forEdit', { timeout: 2000 });
@@ -98,6 +101,7 @@ describe('Edit Channel', () => {
     await expect(page).toClick('button', { text: 'Управление каналом forAbort' });
     await expect(page).toClick('a', { text: 'Переименовать' });
     await expect(page).toFill('#channelName', 'general', { timeout: 2000 });
+    await page.waitForTimeout(2000);
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('Имя канала уже используется', { timeout: 2000 });
     await expect(page).toClick('button', { text: 'Отменить' });
