@@ -116,7 +116,7 @@ describe('Registration', () => {
       selector: 'input#password',
       value: 'abcde',
       text: 'Не менее 6 символов',
-      valid: true,
+      valid: false,
     });
   });
 
