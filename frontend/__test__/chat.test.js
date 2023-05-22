@@ -48,17 +48,17 @@ describe('Chat', () => {
     await page.waitForTimeout(2000);
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('# chanel1', { timeout: 2000 });
+    await page.waitForTimeout(1000);
   });
 
   it('Add exist Channel', async () => {
     await expect(page).toClick('button', { text: 'Создать канал' });
     await expect(page).toMatchTextContent('Создать канал', { timeout: 2000 });
     await expect(page).toFill('#channelName', 'general', { timeout: 2000 });
-    await page.waitForTimeout(2000);
     await expect(page).toClick('.modal-body button', { text: 'Отправить' });
     await expect(page).toMatchTextContent('Имя канала уже используется', { timeout: 2000 });
     await expect(page).toClick('button', { text: 'Отменить' });
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1000);
   });
 });
 

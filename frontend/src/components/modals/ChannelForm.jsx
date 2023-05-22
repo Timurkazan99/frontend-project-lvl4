@@ -20,8 +20,8 @@ function ChannelForm({ onHide }) {
   const click = ({ channelName }, actions) => {
     const payload = selected.id ? { name: channelName, id: selected.id } : { name: channelName };
     socket.emit(selected.eventName, payload, responseStatusCheck);
-    actions.setValues({ channelName: '' });
     onHide();
+    actions.setValues({ channelName: '' });
   };
 
   const formik = useFormik({
