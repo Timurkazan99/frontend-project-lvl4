@@ -64,7 +64,7 @@
   "scripts": {
     "build": "webpack --config ./webpack/webpack.prod.conf.js",
     "dev": "webpack-dev-server --no-open --config ./webpack/webpack.dev.conf.js",
-    "test": "npx jest",
+    "test": "npx jest --maxWorkers=2",
     "linter": "npx eslint ."
   },
   "jest-puppeteer": {

@@ -3,6 +3,7 @@ jest.setTimeout(50000);
 
 describe('Auth', () => {
   beforeAll(async () => {
+    await jestPuppeteer.resetBrowser();
     await page.goto('http://localhost:8081');
     await page.waitForSelector('#root');
   });

@@ -3,6 +3,7 @@ jest.setTimeout(50000);
 
 describe('Chat', () => {
   beforeAll(async () => {
+    await jestPuppeteer.resetBrowser();
     await page.goto('http://localhost:8081');
     await page.waitForSelector('#username');
     await page.type('#username', 'admin');
@@ -26,10 +27,12 @@ describe('Chat', () => {
     await expect(page).toMatchTextContent('message to general', { timeout: 2000 });
     await expect(page).toClick('button', { text: '# random' });
     await expect(page).not.toMatchTextContent('message to general', { timeout: 2000 });
+    page.waitForTimeout(1000);
     await expect(page).toFill('input', 'message to random', { timeout: 2000 });
     await expect(page).toClick('button[type="submit"]');
     await expect(page).toMatchTextContent('message to random', { timeout: 2000 });
     await expect(page).toClick('button', { text: '# general' });
+    page.waitForTimeout(1000);
     await expect(page).not.toMatchTextContent('message to random', { timeout: 2000 });
     await expect(page).toMatchTextContent('message to general', { timeout: 2000 });
   });
