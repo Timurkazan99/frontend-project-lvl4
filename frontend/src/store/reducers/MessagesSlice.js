@@ -5,7 +5,6 @@ import modifyBuilder from '../../utils/modifyBuilder.js';
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState({ loading: null, error: null });
 
-/* eslint-disable no-param-reassign */
 export const messagesSlice = createSlice({
   name: 'messages',
   initialState,
@@ -23,7 +22,6 @@ export const messagesSlice = createSlice({
       });
   },
 });
-/* eslint-enable no-param-reassign */
 
 export const selectors = messagesAdapter.getSelectors((state) => state.messages);
 export const { actions } = messagesSlice;

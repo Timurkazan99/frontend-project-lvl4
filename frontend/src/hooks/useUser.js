@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-this-expression */
 const useUser = () => ({
   name: '',
   isAuth: false,
@@ -10,6 +9,5 @@ const useUser = () => ({
     this.isAuth = newIsAuth;
   },
 });
-/* eslint-enable functional/no-this-expression */
 
 export default useUser;

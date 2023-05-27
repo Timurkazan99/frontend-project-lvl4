@@ -3,8 +3,6 @@ import { ListGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import ChannelListItem from './ChannelListItem.jsx';
 
-/* eslint-disable react/jsx-wrap-multilines */
-
 function ChannelList() {
   const channels = useSelector((state) => state.channels);
 
@@ -34,6 +32,5 @@ function ChannelList() {
     </ListGroup>
   );
 }
-/* eslint-enable react/jsx-wrap-multilines */
 
 export default ChannelList;

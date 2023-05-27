@@ -4,7 +4,6 @@ import ContextProvider from './components/ContextProvider.jsx';
 import init from './init.jsx';
 
 const app = async () => {
-  // eslint-disable-next-line no-undef
   const root = ReactDOM.createRoot(document.getElementById('root'));
   const vdom = await init();
   root.render(

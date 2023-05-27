@@ -31,7 +31,6 @@ function Chat() {
 
     rollbar.log('Connected');
     dispatch(thunkFetchData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -40,7 +39,6 @@ function Chat() {
       networkError();
       rollbar.error('Network error', channels.error);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [channels.error]);
 
   return (

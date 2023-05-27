@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { show: false, activeTab: 'list' };
 
-/* eslint-disable no-param-reassign */
 export const UiSlice = createSlice({
   name: 'modal',
   initialState,
@@ -21,7 +20,6 @@ export const UiSlice = createSlice({
     },
   },
 });
-/* eslint-enable no-param-reassign */
 
 export const {
   onShow, onHide, toChat, toList,

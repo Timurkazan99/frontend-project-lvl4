@@ -9,7 +9,6 @@ const initialState = channelsAdapter.getInitialState({
   selected: { eventName: 'newChannel' },
 });
 
-/* eslint-disable no-param-reassign */
 export const channelsSlice = createSlice({
   name: 'channels',
   initialState,
@@ -31,7 +30,6 @@ export const channelsSlice = createSlice({
     modifyBuilder(builder, channelsAdapter, 'channels');
   },
 });
-/* eslint-enable no-param-reassign */
 
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
 export const { actions } = channelsSlice;

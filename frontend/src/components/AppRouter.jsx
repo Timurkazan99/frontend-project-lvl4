@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import routes from '../routes';
 import { NOTFOUND_ROUTE } from '../utils/const.js';
 
-/* eslint-disable react/jsx-wrap-multilines */
 function AppRouter() {
   return (
     <Routes>
@@ -18,6 +17,5 @@ function AppRouter() {
     </Routes>
   );
 }
-/* eslint-enable react/jsx-wrap-multilines */
 
 export default AppRouter;

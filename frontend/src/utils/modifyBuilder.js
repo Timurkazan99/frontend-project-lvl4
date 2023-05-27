@@ -1,6 +1,5 @@
 import thunkFetchData from '../store/thunks/fetchData.js';
 
-/* eslint-disable no-param-reassign */
 const modifyBuilder = (builder, sliceAdapter, items) => builder
   .addCase(thunkFetchData.pending, (state) => {
     state.loading = 'loading';
@@ -13,6 +12,5 @@ const modifyBuilder = (builder, sliceAdapter, items) => builder
     state.loading = 'failed';
     state.error = action.error;
   });
-/* eslint-enable no-param-reassign */
 
 export default modifyBuilder;

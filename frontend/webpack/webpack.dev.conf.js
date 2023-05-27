@@ -30,8 +30,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ],
 });
 
-/* eslint-disable no-unused-vars */
 module.exports = new Promise((resolve, reject) => {
   resolve(devWebpackConfig);
 });
-/* eslint-enable no-unused-vars */

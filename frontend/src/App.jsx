@@ -24,8 +24,6 @@ function App() {
     }
     device.setIsMobile(isMobile);
     setIsLoading(false);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {

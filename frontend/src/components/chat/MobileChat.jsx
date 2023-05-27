@@ -11,8 +11,6 @@ function MobileChat() {
 
   useEffect(() => {
     dispatch(toChat());
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChannel]);
 
   return (activeTab === 'chat') ? <MessageTab /> : <ChannelTab />;

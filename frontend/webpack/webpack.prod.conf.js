@@ -11,8 +11,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   plugins: [],
 });
 
-/* eslint-disable no-unused-vars */
 module.exports = new Promise((resolve, reject) => {
   resolve(buildWebpackConfig);
 });
-/* eslint-enable no-unused-vars */

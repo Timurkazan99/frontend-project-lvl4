@@ -35,6 +35,8 @@ rules:
   testing-library/no-debug: 0
   react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }]
   "linebreak-style": 0
+  react/jsx-wrap-multilines: 0
+  react-hooks/exhaustive-deps: 0
 
 overrides:
   - files:
@@ -51,3 +53,22 @@ overrides:
       import/named: 0
       functional/no-let: 0
       react-hooks/rules-of-hooks: 0
+  - files:
+      - "src/store/reducers/*.js"
+      - "src/utils/modifyBuilder.js"
+      - "src/http/index.js"
+    rules:
+      no-param-reassign: 0
+  - files:
+      - "webpack/*"
+    rules:
+      no-unused-vars: 0
+  - files:
+      - "src/hooks/useUser.js"
+      - "src/hooks/useDevice.js"
+    rules:
+      functional/no-this-expression: 0
+  - files:
+    - "index.jsx"
+    rules:
+      no-undef: 0
