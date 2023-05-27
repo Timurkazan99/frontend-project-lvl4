@@ -1,4 +1,4 @@
-import ruTranslation from './resources/ru';
+import ruTranslation from './resources/ru.js';
 
 const resources = {
   ru: ruTranslation,

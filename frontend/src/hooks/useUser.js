@@ -1,16 +1,15 @@
-import { useState } from 'react';
+/* eslint-disable functional/no-this-expression */
+const useUser = () => ({
+  name: '',
+  isAuth: false,
+  setName(newName) {
+    localStorage.setItem('username', newName);
+    this.name = newName;
+  },
+  setIsAuth(newIsAuth) {
+    this.isAuth = newIsAuth;
+  },
+});
+/* eslint-enable functional/no-this-expression */
 
-export default function useUser() {
-  const [name, setName] = useState('');
-  const [isAuth, setIsAuth] = useState(false);
-
-  return {
-    name,
-    isAuth,
-    setName: (newName) => {
-      localStorage.setItem('username', newName);
-      setName(newName);
-    },
-    setIsAuth,
-  };
-}
+export default useUser;

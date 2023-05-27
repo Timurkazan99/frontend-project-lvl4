@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { reducer as channelsSlice } from './reducers/ChannelsSlice';
-import { reducer as messagesSlice } from './reducers/MessagesSlice';
-import { reducer as uiSlice } from './reducers/UiSlice';
+import { reducer as channelsSlice } from './reducers/ChannelsSlice.js';
+import { reducer as messagesSlice } from './reducers/MessagesSlice.js';
+import { reducer as uiSlice } from './reducers/UiSlice.js';
 
 const rootReducer = combineReducers({
   channels: channelsSlice,

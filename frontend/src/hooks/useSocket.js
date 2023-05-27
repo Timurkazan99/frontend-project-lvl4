@@ -1,7 +1,7 @@
 import { batch, useDispatch } from 'react-redux';
-import { actions as messagesActions } from '../store/reducers/MessagesSlice';
-import { actions as channelsActions } from '../store/reducers/ChannelsSlice';
-import useToast from './useToast';
+import { actions as messagesActions } from '../store/reducers/MessagesSlice.js';
+import { actions as channelsActions } from '../store/reducers/ChannelsSlice.js';
+import useToast from './useToast.js';
 
 export default function useSocket(socket) {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function useSocket(socket) {
         dispatch(channelsActions.addChannel(payload));
         dispatch(channelsActions.setActive(payload));
       });
-      createChannel(payload.name);
+      createChannel();
     });
 
     socket.on('removeChannel', (payload) => {
@@ -30,7 +30,7 @@ export default function useSocket(socket) {
     socket.on('renameChannel', (payload) => {
       dispatch(channelsActions.updateChannel({ id: payload.id, changes: payload }));
       dispatch(channelsActions.setActive(payload));
-      renamingChannel(payload.name);
+      renamingChannel();
     });
   };
 }

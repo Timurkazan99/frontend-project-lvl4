@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URI } from '../utils/const';
+import { URI } from '../utils/const.js';
 
 const host = process.env.REACT_APP_HOST;
 const baseURL = `${host}${URI}`;

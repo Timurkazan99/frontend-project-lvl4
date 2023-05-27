@@ -1,4 +1,4 @@
-import thunkFetchData from '../store/thunks/fetchData';
+import thunkFetchData from '../store/thunks/fetchData.js';
 
 /* eslint-disable no-param-reassign */
 const modifyBuilder = (builder, sliceAdapter, items) => builder

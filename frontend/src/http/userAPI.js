@@ -1,4 +1,4 @@
-import { $host } from './index';
+import { $host } from './index.js';
 
 const sendRequestTo = async (username, password, url) => {
   const { data } = await $host.post(url, { username, password });

@@ -1,5 +1,5 @@
 import { useRollbar } from '@rollbar/react';
-import useToast from './useToast';
+import useToast from './useToast.js';
 
 export default function useStatusCheck() {
   const { networkError } = useToast();

@@ -19,8 +19,7 @@ export const UiSlice = createSlice({
     toList: (state) => {
       state.activeTab = 'list';
     },
-  }
-  ,
+  },
 });
 /* eslint-enable no-param-reassign */
 

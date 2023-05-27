@@ -48,7 +48,13 @@ module.exports = {
       },
       {
         test: /\.jsx$/,
-        exclude: /node_modules/,
+        exclude: [
+          path.join(__dirname, '../__test__'),
+          path.join(__dirname, '../__mocks__'),
+          path.join(__dirname, '../src/components/__mocks__'),
+          path.join(__dirname, '../src/hooks/__mocks__'),
+          /node_modules/,
+        ],
         use: {
           loader: 'babel-loader',
           options: {

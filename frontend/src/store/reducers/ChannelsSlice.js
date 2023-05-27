@@ -1,5 +1,5 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import modifyBuilder from '../../utils/modifyBuilder';
+import modifyBuilder from '../../utils/modifyBuilder.js';
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRollbar } from '@rollbar/react';
-import { CHAT_ROUTE } from '../utils/const';
-import isHandleableError from '../utils/handleErrorStatus';
+import { CHAT_ROUTE } from '../utils/const.js';
+import isHandleableError from '../utils/handleErrorStatus.js';
 import { Context } from '../components/ContextProvider.jsx';
-import useToast from './useToast';
+import useToast from './useToast.js';
 
 const useSubmit = (formProps) => {
   const { user } = useContext(Context);
@@ -23,7 +23,7 @@ const useSubmit = (formProps) => {
         actions.setErrors(formProps.errorMessage);
       } else {
         networkError();
-        rollbar.error('Network error:', e);
+        rollbar.error('Network error:', e.message);
       }
     }
   };

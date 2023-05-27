@@ -1,10 +1,10 @@
-import { useState } from 'react';
+/* eslint-disable functional/no-this-expression */
+const useDevice = () => ({
+  isMobile: false,
+  setIsMobile(newValue) {
+    this.isMobile = newValue;
+  },
+});
+/* eslint-enable functional/no-this-expression */
 
-export default function useDevice() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  return {
-    isMobile,
-    setIsMobile,
-  };
-}
+export default useDevice;
