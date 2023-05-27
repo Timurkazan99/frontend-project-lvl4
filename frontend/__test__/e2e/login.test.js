@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+import { jest } from '@jest/globals';
+
 jest.setTimeout(50000);
 
 const loginMatch = async (user, text) => {
@@ -169,4 +170,3 @@ describe('Registration', () => {
     await expect(page).toMatchTextContent('Ваш ник: Login', { timeout: 2000 });
   });
 });
-/* eslint-enable no-undef */

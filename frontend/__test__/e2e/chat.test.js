@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+import { jest } from '@jest/globals';
+
 jest.setTimeout(50000);
 
 describe('Chat', () => {
@@ -121,4 +122,3 @@ describe('Edit Channel', () => {
     await page.waitForTimeout(1000);
   });
 });
-/* eslint-enable no-undef */

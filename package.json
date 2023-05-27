@@ -6,6 +6,7 @@
     "build": "npm run build --prefix frontend",
     "start": "npm start --prefix backend",
     "test": "npm run test --prefix frontend",
+    "test:unit": "npm run test:unit --prefix frontend",
     "linter": "npm run linter --prefix frontend"
   },
   "workspaces": [

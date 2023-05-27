@@ -1,0 +1,19 @@
+{
+  "launch": {
+    "headless": true
+  },
+  "server": [
+    {
+      "command": "start-server",
+      "port": 5000
+    },
+    {
+      "command": "npm run dev",
+      "port": 8081,
+      "launchTimeout": 120000,
+      "waitOnScheme": {
+        "delay": 60000
+      }
+    }
+  ]
+}

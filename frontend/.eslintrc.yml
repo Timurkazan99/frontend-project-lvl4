@@ -35,3 +35,19 @@ rules:
   testing-library/no-debug: 0
   react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }]
   "linebreak-style": 0
+
+overrides:
+  - files:
+      - "__test__/*/*.js"
+      - "__test__/*/*.jsx"
+      - "__mocks__/*/*.js"
+      - "__mocks__/*.js"
+      - "src/components/__mocks__/*.jsx"
+      - "src/hooks/__mocks__/*.js"
+    rules:
+      no-undef: 0
+      import/no-extraneous-dependencies: 0
+      import/prefer-default-export: 0
+      import/named: 0
+      functional/no-let: 0
+      react-hooks/rules-of-hooks: 0

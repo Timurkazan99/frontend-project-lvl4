@@ -1,0 +1,9 @@
+{
+  "preset": "jest-puppeteer",
+  "transform": {
+    "\\.[jt]sx?$": "babel-jest"
+  },
+  "testMatch": [
+    "<rootDir>/*.test.js"
+  ]
+}
