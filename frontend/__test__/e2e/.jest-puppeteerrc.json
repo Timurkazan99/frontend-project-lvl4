@@ -5,6 +5,7 @@
   "server": [
     {
       "command": "start-server",
+      "launchTimeout": 20000,
       "port": 5000
     },
     {

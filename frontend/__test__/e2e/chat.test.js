@@ -1,5 +1,3 @@
-import { jest } from '@jest/globals';
-
 jest.setTimeout(50000);
 
 describe('Chat', () => {
